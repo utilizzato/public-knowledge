@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0pt}
+\sloppy
+
+
+\newtheorem*{fact*}{Fact}
+\newtheorem*{nomn*}{Nomenclature}
+\newtheorem*{fact_plus_nomn*}{Fact + Nomenclature}
+\newtheorem*{exer*}{Exercise}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{defn}{Definition}
+\newtheorem{example}{Example}
+
+\begin{document}
+
+
+This document is written with the intention of helping the author learn. Not only by teaching, but also in the scenario where a time traveler gifts it to their younger self.
+Other readers are also welcome, but be warned: this text is written for highly motivated, mathematically mature readers. Readers are expected to be able to supply rigorous proofs where they are omitted, try their hand at proving results before reading the given proofs, internalize the given proofs in their own terms, work out cases on their own, and so on. 
+The author believes the best way to learn is with a mentor. The author knows there are easily available books far better than this document, in every respect, except that it lets the author do as they please.
+ 
+
+\newpage
+\section*{Number Theory - Lecture 1 - The Fundamental Theorem of Arithmetic}
+
+
+\begin{fact*}[Principle of Induction]
+Any non-empty subset of the positif integers contains a smallest element.
+\end{fact*}
+
+
+\begin{fact_plus_nomn*}
+Let $d$ be a positive integer and $m$ be an integer. Then, there exists a unique pair of integers $q,r$ satisfying $m=dq+r$ and $0\le r < d$. We call $q$ the \underline{quotient} and $r$ the \underline{remainder} of the division of $m$ by $d$. When $r=0$, that is, when there exists an integer $q$ with $m=dq$, we say that $d$ \underline{divides} $m$, that $d$ is a \underline{divisor} of $m$, or that $m$ is \underline{divisible} by $d$, and we write this relation as $d\mid m$.
+
+\end{fact_plus_nomn*}
+
+\begin{nomn*}
+An integer $p \ge 2$ is called a \underline{prime number} if its only divisors are $1$ and $p$. 
+\end{nomn*}
+
+
+\begin{fact*}
+Each positive integer $n\ge 2$ is divisible by at least one prime number $p$.
+\end{fact*}
+
+
+\begin{fact*}[Primes don't materialize out of thin air]
+Let $p$ be a prime number, and let $m,n$ be integers satisfying $p\mid mn$. Then, either $p\mid m$ or $p\mid n$.
+\end{fact*}
+
+
+\begin{proof}
+Without loss of generality, we may restict our attention to positif $m,n$.
+By the principle of induction, we may suppose the theorem holds for all prime numbers $p'$ smaller than $p$ (and any $n,m$). Again by the principle of induction, we may suppose the theorem holds for all positif pairs $m',n'$ with a smaller sum $m' + n' < m + n$ (and our fixed $p$).
+Applying division with remainder, we may suppose $0 \le m,n < p$. 
+We may now write $kp=mn$ for some integer $0 \le k < p$. \\
+Case 1. If $k = 0$ then either $m=0$ or $n=0$, and we have our desired conclusion. \\
+Case 2. We cannot have $k=1$, by $p$ being a prime number. \\
+Case 3. If $k\ge 2$, then we may pick some prime number $q$ dividing $k$. In particular $q \mid mn$ and $q < p$. Thus, the (first) induction hypothesis, yields that either $q\mid m$ or $q\mid n$. Without loss of generality, we may assume $q\mid m$. We may write $k=qd$ and $m=qr$ for some positif integers $d,r$ with $r < m$, yielding $dp=rn$. Thus, the (second) induction hypothesis yields that either $p\mid r$ (implying $p\mid m$) or $p\mid n$, reaching our desired conclusion.
+\end{proof}
+
+
+\begin{fact*}[Fundamental Theorem of Arithmetic]
+Each positive integer $n$ may be written as a product of a list of prime numbers $n=p_1\dots p_\ell$, in a manner unique up to reordering of the terms.
+\end{fact*}
+
+
+\newpage
+\section*{Number Theory - Exercises for Lecture 1}
+
+
+\begin{fact*}
+$d \mid m$ and $m \mid n$ implies $d\mid n$.
+\end{fact*}
+
+
+\begin{fact*}
+$m$ and $n$ have the same remainder with respect to division by $d$ if and only if $d \mid m-n$.    
+\end{fact*}
+
+
+\begin{fact*}
+The remainders of $m+n$ and of $mn$ with respect to division by $d$ depends only on the remainders of $m$ and of $n$ with respect to division by $d$. 
+\end{fact*}
+
+
+\begin{fact_plus_nomn*}
+For a positive integer $n$ and a prime number $p$, let the \underline{$p$-adic valuation} $\nu_p(n)$ be the number of times we may divide $n$ by $p$ (until the result is no longer divisible by $p$). 
+We have \[ n = \prod_{p} p^{\nu_p(n)} \]
+\end{fact_plus_nomn*}
+
+
+\begin{fact*}
+We have $\nu_p(nm) = \nu_p(n) + \nu_p(m)$.
+\end{fact*}
+
+
+\begin{fact*}
+We have $\nu_p(n + m) \ge \min(\nu_p(n), \nu_p(m))$, and equality holds if $\nu_p(n) \neq \nu_p(m)$ (but not necessarily otherwise).
+\end{fact*}
+
+
+\begin{fact*}
+A positive integer is a perfect $k$-th power if and only if $k\mid \nu_p(n)$ for all prime numbers $p$. Deduce that the square root of $2$ is irrational. More generally, the $k$-th root of a positive integer which is not a perfect $k$-th power, is irrational.
+\end{fact*}
+
+
+\begin{fact*}
+The number of divisors of $n$ equals $\prod_p (\nu_p(n) + 1)$. In particular, $n$ has an odd number of divisors if and only if $n$ is a perfect square - convince a child of this.
+\end{fact*}
+
+
+\begin{exer*}
+Search for Zarmelo's proof of the Fundamental Theorem of Arithmetic, which does not make use of the fact $p\mid mn\implies p\mid m$ or $p \mid n$.
+\end{exer*}
+
+%\newpage
+% Next lectures - 
+%               - Euclidean Algorithm, gcd, lcm, continued fractions
+%               - Introduction to Modular Arithmetic (chinese, fermat, euler, wilson)
+%               - Introduction to d-adics
+%               - Squares residues, sums of squares, quadratic reciprocity, Z[i], quadratic forms in general
+%               - arithmetic functions
+%               - pythagorean triples, geometric method, infinite descent
+%               - misc (vieta jumping, lifting the exponent)
+
+\end{document}
