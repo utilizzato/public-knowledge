@@ -156,6 +156,25 @@ By induction on $a=1,\dots,p-1$. For $a=1$ the result is clear. Assume the resul
 \end{proof}
 
 
+\begin{nomn*}
+The number of invertible residue classes modulo $n$ is denoted $\varphi(n)$.
+\end{nomn*}
+
+
+\begin{fact*}
+The multiplication table modulo $n$, reduced to the rows and columns of invertible residues modulo $n$ (so that it has size $\varphi(n)\times \varphi(n)$), has only entries that are invertible modulo $n$, and moreover each row (and column) contains each invertible residues precisely once. 
+\end{fact*}
+
+
+\begin{fact*}
+For each invertible residue class $a$ modulo $n$ we have $a^{\varphi(n)}\equiv 1\mod n$.
+\end{fact*}
+
+
+\begin{proof}
+Let $x_1,\dots,x_{\varphi(n)}$ list the invertible residue classes modulo $n$. Then $ax_1,\dots,ax_{\varphi(n)}$ is a reordering of the same list. Therefore, the products of the two lists are equal, that is $x_1\dots x_{\varphi(n)} \equiv ax_1 \dots ax_{\varphi(n)} = a^{\varphi(n)}x_1\dots x_{\varphi(n)} \mod n$. Since $x_1,\dots,x_{\varphi(n)}$ are invertible modulo $n$, we have $1\equiv a^{\varphi(n)} \mod n$ as desired.
+\end{proof}
+
 %\newpage
 % Next lectures - 
 %               - Euclidean Algorithm, gcd, lcm, continued fractions
