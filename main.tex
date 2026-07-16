@@ -202,6 +202,43 @@ Let $a$ solve $a^2\equiv -1\mod p$. Applying Thue's result, let $x,y$ solve $ax\
 \end{proof}
 
 
+\newpage
+\section*{Algebraic Integers}
+
+
+\begin{fact*}[Fundamental Theorem of Symmetric Polynomials]
+Let $f(x_1,\dots,x_n)$ be a symmetric polynomial. Then, in fact, $f(x_1,\dots,x_n) = g(e_1,\dots,e_n)$ may be given as a polynomial expression in the elementary symmetric polynomials in $x_1,\dots,x_n$. 
+\end{fact*}
+
+
+\begin{proof}
+We give a lexicographic ordering of monomials, so that $x_1^{i_1}\dots x_n^{i_n} >_{lex} x_1^{j_1}\dots x_n^{j_n}$ whenever $i_k > j_k$ for the first index $k$ where $i_k\neq j_k$. This is a total order of all monomials. Suppose the lexicographically highest monomial term of $f(x_1,\dots,x_n)$ is $x_I=x_1^{i_1}\dots x_n^{i_n}$, and that the theorem holds for all symmetric polynomials containing terms only lexicographically smaller than this monomial. Since $f$ is symmetric, we have $i_1\ge \dots \ge i_n$. Now, $E_I=e_1^{i_1-i_2}e_2^{i_2-i_3}\dots e_{n-1}^{i_{n-1}-i_n}e_n^{i_n}$ has highest lexicographic monomial term equal to $x_1^{i_1-i_2}(x_1x_2)^{i_2-i_3}\dots(x_1\dots x_{n-1})^{i_{n-1}-i_n}(x_1\dots x_n)^{i_n} = x_I$. Subtracting $cE_I$ from $f$ (where $c$ is the coefficient of $x_I$ in $f$) yields a symmetric polynomial, all of whose terms are lexicographically smaller than $x_I$, so by induction $f-cE_I$ is expressible as a polynomial in $e_1,\dots,e_n$, and thus so is $f$, as desired.
+\end{proof}
+
+
+\begin{fact*}
+Sums and products of algebraic integers are algebraic integers.
+\end{fact*}
+
+
+\begin{proof}
+Let $\alpha,\beta$ be algebraic integers. Then we may write
+\[
+(x-\alpha_1)\dots (x-\alpha_m) = x^m + a_1x^{m-1} + \dots + a_{m-1}x + a_m
+\]
+\[
+(x-\beta_1)\dots (x-\beta_n) = x^n + b_1x^{n-1} + \dots + b_{n-1}x + b_n
+\]
+for integers $a_i,b_j$ and numbers $\alpha_i,\beta_j$ with $\alpha=\alpha_1$, $\beta=\beta_1$. Consider the polynomials
+\[
+\prod_{i,j}(x-(\alpha_i+\beta_j))
+\]
+and
+\[
+\prod_{i,j}(x-(\alpha_i\beta_j))
+\]
+By the fundamental theorem of symmetric polynomials, each of these is expressible as a polynomial in $x$ whose coefficients are polynomials in $a_i,b_j$. That is, these polynomials have integer coefficients. In particular, $\alpha+\beta$ and $\alpha\beta$ are algebraic integers, as desired.
+\end{proof}
 %\newpage
 % Next lectures - 
 %               - Euclidean Algorithm, gcd, lcm, continued fractions
