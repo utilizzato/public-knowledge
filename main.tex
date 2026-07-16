@@ -6,7 +6,7 @@
 
 \setlength{\parindent}{0pt}
 \sloppy
-
+\raggedright
 
 \newtheorem*{fact*}{Fact}
 \newtheorem*{nomn*}{Nomenclature}
@@ -123,6 +123,38 @@ The number of divisors of $n$ equals $\prod_p (\nu_p(n) + 1)$. In particular, $n
 \begin{exer*}
 Search for Zarmelo's proof of the Fundamental Theorem of Arithmetic, which does not make use of the fact $p\mid mn\implies p\mid m$ or $p \mid n$.
 \end{exer*}
+
+
+\newpage
+
+
+TODO: fix lecture 1 given the following.\\
+
+
+\begin{nomn*}
+We call $a$ \underline{invertible} modulo $n$ if $0,a,2a,3a,\dots,(n-1)a$ cover all $n$ distinct residue classes modulo $n$. Namely, if the row corresponding to $a$ in the multiplication table modulo $n$ contains each residue precisely once. 
+\end{nomn*}
+
+
+\begin{fact*}
+$a$ is invertible modulo $n$ if and only if there exists $b$ such that $ab\equiv 1\mod n$. In that case, $b$ is unique modulo $n$.
+\end{fact*}
+
+
+\begin{fact*}
+$xy$ is invertible modulo $n$ if and only if both $x$ and $y$ are invertible modulo $n$.
+\end{fact*}
+
+
+\begin{fact*}
+Let $p$ be a prime number. Then each non-zero residue $a$ is invertible modulo $p$.
+\end{fact*}
+
+
+\begin{proof}
+By induction on $a=1,\dots,p-1$. For $a=1$ the result is clear. Assume the result holds for all previous $a$ values. Divide $p$ by $a$ with remainder so that $p=aq+r$ for some $0\le r < a$. Since $p$ is a prime number and $1 < a < p$, we have that $a\nmid p$ so $1\le r < a$, and thus the inductive hypothesis yields that $r\equiv -aq \mod p$ is invertible modulo $p$, and hence so is $a$. 
+\end{proof}
+
 
 %\newpage
 % Next lectures - 
