@@ -298,6 +298,8 @@ $\Phi_n(x)$ is irreducible in $\Q[x]$.
 \begin{proof}(Schur)
 Recall that the discriminant of $x^n-1$ is $\pm n^n$. Let $f(x)$ be the minimal polynomial of $\zeta$ over $\Q$. So $f(x)\in\Z[x]$ and $f(x)=(x-\zeta_1)\dots(x-\zeta_k)$ for some distinct $n$-th roots of unity $\zeta_1,\dots,\zeta_k$. We must show that the roots of $f(x)$ are closed under exponentiating by powers coprime to $n$. It suffices to show that if $\mu$ is a root of $f$ and $p$ is a prime coprime to $n$ then $\mu^p$ is a root of $f$. We have that $f(\mu^p) = f(\mu^p) - f(\mu)^p = f(x^p) - f(x)^p \restriction_{x=\mu} = pg(x) \restriction_{x=\mu}$ for some $g(x)\in\Z[x]$, so that $p\mid f(\mu^p)$ over $\overline\Z$. Moreover, if we assume for the sake of contradiction that $\mu^p$ is not a root of $f$ then $f(\mu^p) = (\mu^p-\zeta_1)\dots(\mu^p-\zeta_k)$ divides the discriminant $\pm n^n$ over $\overline\Z$. However, $p\mid \pm n^n$ over $\overline\Z$ implies $p\mid n$ over $\Z$, contrary to our assumption. This shows that $\mu^p$ is a root of $f$, as desired.
 \end{proof}
+
+
 %\newpage
 % Next lectures - 
 %               - Euclidean Algorithm, gcd, lcm, continued fractions
@@ -311,4 +313,6 @@ Recall that the discriminant of $x^n-1$ is $\pm n^n$. Let $f(x)$ be the minimal 
 %               - finite fields, primitive elements
 %               - ring of integers, factorization of ideals and class group
 %               - fibonacci, chevalley warning,
+
+%               - a proof of Wedderburn's theorem that a finite non-commutative domain is a field using cyclotomics is given in https://oneand.wordpress.com/2013/07/13/%d7%a4%d7%95%d7%9c%d7%99%d7%a0%d7%95%d7%9e%d7%99%d7%9d-%d7%a6%d7%99%d7%a7%d7%9c%d7%95%d7%98%d7%95%d7%9e%d7%99%d7%9d-%d7%95%d7%9e%d7%a9%d7%a4%d7%98-%d7%96%d7%99%d7%92%d7%9e%d7%95%d7%a0%d7%93%d7%99/
 \end{document}
