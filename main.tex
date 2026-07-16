@@ -26,8 +26,12 @@
 \newcommand{\C}{\mathbf{C}}
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\Z}{\mathbf{Z}}
+\newcommand{\OO}{\mathcal{O}}
+
 
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\gen}[1]{\langle#1\rangle}
+
 
 \begin{document}
 
@@ -298,6 +302,24 @@ $\Phi_n(x)$ is irreducible in $\Q[x]$.
 \begin{proof}(Schur)
 Recall that the discriminant of $x^n-1$ is $\pm n^n$. Let $f(x)$ be the minimal polynomial of $\zeta$ over $\Q$. So $f(x)\in\Z[x]$ and $f(x)=(x-\zeta_1)\dots(x-\zeta_k)$ for some distinct $n$-th roots of unity $\zeta_1,\dots,\zeta_k$. We must show that the roots of $f(x)$ are closed under exponentiating by powers coprime to $n$. It suffices to show that if $\mu$ is a root of $f$ and $p$ is a prime coprime to $n$ then $\mu^p$ is a root of $f$. We have that $f(\mu^p) = f(\mu^p) - f(\mu)^p = f(x^p) - f(x)^p \restriction_{x=\mu} = pg(x) \restriction_{x=\mu}$ for some $g(x)\in\Z[x]$, so that $p\mid f(\mu^p)$ over $\overline\Z$. Moreover, if we assume for the sake of contradiction that $\mu^p$ is not a root of $f$ then $f(\mu^p) = (\mu^p-\zeta_1)\dots(\mu^p-\zeta_k)$ divides the discriminant $\pm n^n$ over $\overline\Z$. However, $p\mid \pm n^n$ over $\overline\Z$ implies $p\mid n$ over $\Z$, contrary to our assumption. This shows that $\mu^p$ is a root of $f$, as desired.
 \end{proof}
+
+
+\begin{fact*}
+Let $\zeta=\zeta_{p^r}$, $K=\Q(\zeta)$, and $m=[K:\Q]$. We have 
+\begin{itemize}
+    \item $N_{K/\Q}(1-\zeta)=p$
+    
+    \item $(1-\zeta)\OO_K \cap \Z = p\Z$
+
+    \item $(1-\zeta^j)/(1-\zeta)\in\OO_K^\times$ for all $j\in(\Z/p^r\Z)^{\times}$
+    
+    \item $p\OO_K = (1-\zeta)^m \OO_K$
+    
+    \item $\Z[\zeta] \cap p\OO_K = p\Z[\zeta]$
+\end{itemize}
+
+% this is taken from https://virtualmath1.stanford.edu/~conrad/154Page/handouts/cycint.pdf where they use it to show O_K=Z[zeta] using discriminants
+\end{fact*}
 
 
 %\newpage
