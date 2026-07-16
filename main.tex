@@ -23,7 +23,10 @@
 \newtheorem{example}{Example}
 
 \DeclareMathOperator{\id}{id}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Q}{\mathbf{Q}}
 \newcommand{\Z}{\mathbf{Z}}
+
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 
 \begin{document}
@@ -208,6 +211,12 @@ Let $a$ solve $a^2\equiv -1\mod p$. Applying Thue's result, let $x,y$ solve $ax\
 \section*{Algebraic Integers}
 
 
+\begin{fact*}
+A number which is both rational and an algebraic integer must be an integer.
+\[\Q \cap \overline\Z = \Z\]
+\end{fact*}
+
+
 \begin{fact*}[Fundamental Theorem of Symmetric Polynomials]
 Let $f(x_1,\dots,x_n)$ be a symmetric polynomial. Then, in fact, $f(x_1,\dots,x_n) = g(e_1,\dots,e_n)$ may be given as a polynomial expression in the elementary symmetric polynomials in $x_1,\dots,x_n$. 
 \end{fact*}
@@ -250,6 +259,45 @@ Then $A\otimes B\in \Z^{nm\times nm}$ and $A\otimes \id_n + \id_m\otimes B$ have
 \end{proof}
 
 
+\newpage
+\section*{Cyclotomics}
+
+
+\begin{nomn*}
+The $n$-th cyclotomic polynomial is
+\[
+\Phi_n(x) = \prod_{\mu\text{ a primitive $n$-th root of unity}} (x-\mu) = \prod_{j\in(\Z/n\Z)^\times} (x-\zeta^{j})
+\]
+where $\zeta=e^{2\pi i/n}$.
+\end{nomn*}
+
+
+\begin{fact*}
+\[
+x^n - 1 = \prod_{d\mid n} \Phi_d(x)
+\]
+\end{fact*}
+
+
+\begin{fact*}
+$\Phi_n(x)\in\Z[x]$ is a monic integer polynomial.
+\end{fact*}
+
+
+\begin{proof}
+Clearly $\Phi_n(x)$ is a monic polynomial. By induction, we have that $\Phi_n(x)$ is a rational function of $x$ with rational coefficients, but it has no poles so it is a rational polynomial. $\Phi_n(x)\in\Q(x)\cap \C[x] = \Q[x]$. It is clear that the roots of $\Phi_n(x)$ are algebraic integers, so the coefficients of $\Phi_n(x)$ are algebraic integers that are rational numbers, and so $\Phi_n(x)$ has integer coefficients.
+$\Phi_n(x)\in\Q[x]\cap \overline\Z[x] = \Z[x]$.
+\end{proof}
+
+
+\begin{fact*}
+$\Phi_n(x)$ is irreducible in $\Q[x]$.
+\end{fact*}
+
+
+\begin{proof}(Schur)
+Recall that the discriminant of $x^n-1$ is $\pm n^n$. Let $f(x)$ be the minimal polynomial of $\zeta$ over $\Q$. So $f(x)\in\Z[x]$ and $f(x)=(x-\zeta_1)\dots(x-\zeta_k)$ for some distinct $n$-th roots of unity $\zeta_1,\dots,\zeta_k$. We must show that the roots of $f(x)$ are closed under exponentiating by powers coprime to $n$. It suffices to show that if $\mu$ is a root of $f$ and $p$ is a prime coprime to $n$ then $\mu^p$ is a root of $f$. We have that $f(\mu^p) = f(\mu^p) - f(\mu)^p = f(x^p) - f(x)^p \restriction_{x=\mu} = pg(x) \restriction_{x=\mu}$ for some $g(x)\in\Z[x]$, so that $p\mid f(\mu^p)$ over $\overline\Z$. Moreover, if we assume for the sake of contradiction that $\mu^p$ is not a root of $f$ then $f(\mu^p) = (\mu^p-\zeta_1)\dots(\mu^p-\zeta_k)$ divides the discriminant $\pm n^n$ over $\overline\Z$. However, $p\mid \pm n^n$ over $\overline\Z$ implies $p\mid n$ over $\Z$, contrary to our assumption. This shows that $\mu^p$ is a root of $f$, as desired.
+\end{proof}
 %\newpage
 % Next lectures - 
 %               - Euclidean Algorithm, gcd, lcm, continued fractions
