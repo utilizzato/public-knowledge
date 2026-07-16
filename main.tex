@@ -22,6 +22,8 @@
 \newtheorem{defn}{Definition}
 \newtheorem{example}{Example}
 
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+
 \begin{document}
 
 
@@ -174,6 +176,31 @@ For each invertible residue class $a$ modulo $n$ we have $a^{\varphi(n)}\equiv 1
 \begin{proof}
 Let $x_1,\dots,x_{\varphi(n)}$ list the invertible residue classes modulo $n$. Then $ax_1,\dots,ax_{\varphi(n)}$ is a reordering of the same list. Therefore, the products of the two lists are equal, that is $x_1\dots x_{\varphi(n)} \equiv ax_1 \dots ax_{\varphi(n)} = a^{\varphi(n)}x_1\dots x_{\varphi(n)} \mod n$. Since $x_1,\dots,x_{\varphi(n)}$ are invertible modulo $n$, we have $1\equiv a^{\varphi(n)} \mod n$ as desired.
 \end{proof}
+
+
+\newpage
+\section*{Quadratic Residues and Quadratic Forms}
+
+% taken from book Modern Olympiad Number Theory
+\begin{fact*}[Thue]
+Let $a$ be coprime to $n$, and $n\ge 2$. Then, there exists a solution to $ax\equiv y\mod n$ with $0 < \abs{x}, \abs{y} < \sqrt{n}$.
+\end{fact*}
+
+
+\begin{proof}
+Consider all combinations $ax-y\mod n$ where $x,y=0,\dots,\lfloor \sqrt{n} \rfloor$. There are $(1+\lfloor \sqrt{n} \rfloor)^2>n$ such combinations, so by the pigeon hole principle there must be a repetition. So let $ax_1-y_1\equiv ax_2-y_2$ where $(x_1,y_1)\neq(x_2,y_2)$. Since $a$ is coprime to $n$, we must have that $x_1\not\equiv x_2$ and $y_1\not\equiv y_2$. Now $x=x_1-x_2$ and $y=y_1-y_2$ satisfy the requested requirments, as desired.
+\end{proof}
+
+
+\begin{fact*}
+Let $p\equiv 1\mod 4$. Then, there exists $x,y$ with $p=x^2+y^2$.
+\end{fact*}
+
+
+\begin{proof}
+Let $a$ solve $a^2\equiv -1\mod p$. Applying Thue's result, let $x,y$ solve $ax\equiv y\mod p$ with $0 < \abs{x},\abs{y} < \sqrt{p}$. Then $0 < x^2+y^2 < 2p$ and $x^2+y^2\equiv x^2(1+a^2)\equiv 0\mod p$, so $p=x^2+y^2$ as desired.
+\end{proof}
+
 
 %\newpage
 % Next lectures - 
