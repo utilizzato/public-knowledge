@@ -22,6 +22,8 @@
 \newtheorem{defn}{Definition}
 \newtheorem{example}{Example}
 
+\DeclareMathOperator{\id}{id}
+\newcommand{\Z}{\mathbf{Z}}
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 
 \begin{document}
@@ -239,6 +241,15 @@ and
 \]
 By the fundamental theorem of symmetric polynomials, each of these is expressible as a polynomial in $x$ whose coefficients are polynomials in $a_i,b_j$. That is, these polynomials have integer coefficients. In particular, $\alpha+\beta$ and $\alpha\beta$ are algebraic integers, as desired.
 \end{proof}
+
+
+\begin{proof}
+Let $A\in\Z^{m\times m}$, $B\in\Z^{n\times n}$ be respectively the companion matrices of $\alpha$, $\beta$.
+Let $A$ have eigenvalues $\alpha_i$ with corresponding eigenvectors $v_i$, and let $B$ have eigenvalues $\beta_j$ with corresponding eigenvectors $u_j$.
+Then $A\otimes B\in \Z^{nm\times nm}$ and $A\otimes \id_n + \id_m\otimes B$ have respectively the eigenvalues $\alpha_i\beta_j$ and $\alpha_i+\beta_j$, both with corresponding eigenvectors $v_i\otimes u_j$. It follows that $\alpha_i\beta_j$ and $\alpha_i+\beta_j$ (and in particular $\alpha\beta$ and $\alpha+\beta$) are algebraic integers, as desired.
+\end{proof}
+
+
 %\newpage
 % Next lectures - 
 %               - Euclidean Algorithm, gcd, lcm, continued fractions
