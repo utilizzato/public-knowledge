@@ -22,8 +22,10 @@
 \newtheorem{defn}{Definition}
 \newtheorem{example}{Example}
 
+\newcommand{\eps}{\varepsilon}
 \DeclareMathOperator{\id}{id}
 \newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathbf{F}}
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\Z}{\mathbf{Z}}
 \newcommand{\OO}{\mathcal{O}}
@@ -317,9 +319,71 @@ Let $\zeta=\zeta_{p^r}$, $K=\Q(\zeta)$, and $m=[K:\Q]$. We have
     
     \item $\Z[\zeta] \cap p\OO_K = p\Z[\zeta]$
 \end{itemize}
+\end{fact*} % this is taken from https://virtualmath1.stanford.edu/~conrad/154Page/handouts/cycint.pdf where they use it to show O_K=Z[zeta] using discriminants
 
-% this is taken from https://virtualmath1.stanford.edu/~conrad/154Page/handouts/cycint.pdf where they use it to show O_K=Z[zeta] using discriminants
+
+\newpage
+\section*{Gauss Sums and Quadratic Reciprocity}
+
+
+Let $p$ be an odd prime, $\eps_p=(-1)^{\frac{p-1}{2}}$, $p^*=\eps_p p$, $\zeta = e^{2\pi i/p}$. Now, we set
+\[\tau = \sum_{x\in\F_p}\zeta^{x^2}\]
+We have
+\[\tau^* = \sum_{y\in\F_p}\zeta^{-y^2}\]
+If $\eps_p=1$ then $-1$ is a square modulo $p$ and so $\tau^*=\tau$. Otherwise $-1$ is a non-square modulo $p$ and so $\tau+\tau^*=2\sum_{w\in\F_p}\zeta^{w}=0$. 
+Thus \[\tau^*=\eps_p\tau\]
+We have
+\[\tau\tau^* = \sum_{x,y\in\F_p}\zeta^{x^2-y^2}=\sum_{u,v\in\F_p}\zeta^{uv} = p\]
+where we make use of the bijection $(x,y)\longleftrightarrow(u,v)$ given by $u=x+y$, $v=x-y$.
+It follows that
+\[\tau = \pm \sqrt{p^*}\]
+%The sign is $+$, but this is not obvious. TODO prove.
+
+
+\begin{fact*}
+We have
+\[\zeta = \sum_{a\in\F_p}(a:p)\zeta^a\]
 \end{fact*}
+
+
+\begin{fact*}
+Let $a_0,\dots,a_{p-1}$ be integers with $\sum_{j}a_j\zeta^j = 0$. Then $a_0=\dots=a_{p-1}$ are all equal.
+\end{fact*}
+
+
+\begin{defn}
+Let $N_r(a) = \#\{(x_1,\dots,x_r)\in\F_p^r : x_1^2+\dots+x_r^2=a\}$.
+\end{defn}
+
+
+For example, we have $N_1(a)=1+(a:p)$.
+
+
+Let $r$ be even. Then 
+\[(p^*)^{r/2}=\tau^r = \sum_{x_1,\dots,x_r\in\F_p}\zeta^{x_1^2+\dots+x_r^2} = \sum_{a\in\F_p}N_r(a)\zeta^{a}\]
+So
+\[N_r(0)-(p^*)^{r/2} = N_r(a) \phantom{-} \forall a\in\F_p^*\]
+It follows (since $\sum_a N_r(a)=p^r$) that
+\[N_r(a) = \begin{cases}
+    p^{-1}(p^r-(p^*)^{r/2}) & a\neq 0 \\
+    p^{-1}(p^r+(p-1)(p^*)^{r/2}) & a = 0 \\
+\end{cases}\]
+Let $r$ be odd. Then
+\[(p^*)^{(r-1)/2}\sum_{a\in\F_p}(a:p)\zeta^{a}=(p^*)^{(r-1)/2}\tau=\tau^r = \sum_{x_1,\dots,x_r\in\F_p}\zeta^{x_1^2+\dots+x_r^2} = \sum_{a\in\F_p}N_r(a)\zeta^{a}\]
+So that $N_r(a) - (p^*)^{(r-1)/2}(a:p) \equiv c$ is a constant. It follows that $c=p^{r-1}$ and so
+\[
+N_r(a) = p^{r-1} + (p^*)^{(r-1)/2}(a:p)
+\]
+
+
+\begin{fact*}[Quadratic Reciprocity]
+Let $p,q$ be distinct odd primes. Then $(p:q)(q:p)=\eps_p\eps_q$.
+\end{fact*}
+
+
+\begin{proof}
+Let us consider $N_q(1) \mod q$. On one hand, $N_q(1)=p^{q-1} + (p^*)^{(q-1)/2} \equiv 1 + (p^*:q) \mod q$. On the other hand, the sphere $\{(x_1,\dots,x_q)\in\F_p^q : x_1^2+\dots+x_q^2=1\}$ is acted on by $C_q$ via cyclic rotations. It follows that $N_q(1) \equiv 1 + (q:p) \mod q$.
+\end{proof}
 
 
 %\newpage
@@ -335,10 +399,10 @@ Let $\zeta=\zeta_{p^r}$, $K=\Q(\zeta)$, and $m=[K:\Q]$. We have
 %               - finite fields, primitive elements
 %               - ring of integers, factorization of ideals and class group
 %               - fibonacci, chevalley warning,
-
+%               - valuation theory, newton polygons
 %               - a proof of Wedderburn's theorem that a finite non-commutative domain is a field using cyclotomics is given in https://oneand.wordpress.com/2013/07/13/%d7%a4%d7%95%d7%9c%d7%99%d7%a0%d7%95%d7%9e%d7%99%d7%9d-%d7%a6%d7%99%d7%a7%d7%9c%d7%95%d7%98%d7%95%d7%9e%d7%99%d7%9d-%d7%95%d7%9e%d7%a9%d7%a4%d7%98-%d7%96%d7%99%d7%92%d7%9e%d7%95%d7%a0%d7%93%d7%99/
 
 %   good refs:  http://gaetan.chenevier.perso.math.cnrs.fr/GT/ireland_rosen.pdf
 %               https://virtualmath1.stanford.edu/~conrad/154Page/handouts.html
-%               Ben Green, Brian Conrad
+%               Ben Green, Brian Conrad, De Shalit
 \end{document}
