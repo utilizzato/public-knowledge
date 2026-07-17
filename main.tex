@@ -399,12 +399,12 @@ Let us consider $N_q(1) \mod q$. On one hand, $N_q(1)=p^{q-1} + (p^*)^{(q-1)/2} 
 
 
 \begin{proof}
-Consider the following stochastic process. First, generate $p\sim U[0,1]$. Then, generate $n$ independent Bernoulli$(p)$ trials $b_1,\dots,b_n \sim \ber(p)$. What is the probability to have precisely $k$ successes? The answer, of course, is
+Consider the following stochastic process. First, generate $p\sim U[0,1]$. Then, generate $n$ independent Bernoulli$(p)$ trials $b_1,\dots,b_n \sim \ber(p)$. What is the probability of having precisely $k$ successes? The answer, of course, is
 \[
 \int_0^1 \binom{n}{k}p^{k}(1-p)^{n-k} \d p
 \]
 \end{proof}
-However, instead of generating the $b_i$ as Bernoulli trials, let us generate $x_1,\dots,x_n\in U[0,1]$ and set $b_i = [x_i < p]$. Then, the questions asks what is the probability that precisely $k$ of the $n$ numbers $x_1,\dots,x_n$ come before $p$. Clearly, the ordering of $p,x_1,\dots,x_n$ is uniform over all permutations of $n+1$ terms, and so this probability is $\frac{1}{n+1}$ for each $k=0,\dots,n$.
+However, instead of generating the $b_i$ as Bernoulli trials out of thin air, let us generate $x_1,\dots,x_n\in U[0,1]$ and set $b_i = [x_i < p]$. Then, the questions asks what is the probability that precisely $k$ of the $n$ numbers $x_1,\dots,x_n$ come before $p$. Clearly, the ordering of $p,x_1,\dots,x_n$ is uniform over all permutations of $n+1$ terms, and so this probability is $\frac{1}{n+1}$ for each $k=0,\dots,n$.
 
 
 
