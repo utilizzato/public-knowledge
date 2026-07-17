@@ -1,4 +1,5 @@
 \documentclass[12pt]{article}
+\setcounter{secnumdepth}{0}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -24,6 +25,8 @@
 
 \newcommand{\eps}{\varepsilon}
 \DeclareMathOperator{\id}{id}
+\renewcommand{\d}{\mathrm{d}}
+\DeclareMathOperator{\ber}{Ber}
 \newcommand{\C}{\mathbf{C}}
 \newcommand{\F}{\mathbf{F}}
 \newcommand{\Q}{\mathbf{Q}}
@@ -41,10 +44,12 @@
 This document is written with the intention of helping the author learn. Not only by teaching, but also in the scenario where a time traveler gifts it to their younger self.
 Other readers are also welcome, but be warned: this text is written for highly motivated, mathematically mature readers. Readers are expected to be able to supply rigorous proofs where they are omitted, try their hand at proving results before reading the given proofs, internalize the given proofs in their own terms, work out cases on their own, and so on. 
 The author believes the best way to learn is with a mentor. The author knows there are easily available books far better than this document, in every respect, except that it lets the author do as they please.
+
+\tableofcontents
  
 
 \newpage
-\section*{Number Theory - Lecture 1 - The Fundamental Theorem of Arithmetic}
+\section{The Fundamental Theorem of Arithmetic}
 
 
 \begin{fact*}[Principle of Induction]
@@ -89,7 +94,7 @@ Each positive integer $n$ may be written as a product of a list of prime numbers
 
 
 \newpage
-\section*{Number Theory - Exercises for Lecture 1}
+\section{Number Theory - Exercises for Lecture 1}
 
 
 \begin{fact*}
@@ -190,7 +195,7 @@ Let $x_1,\dots,x_{\varphi(n)}$ list the invertible residue classes modulo $n$. T
 
 
 \newpage
-\section*{Quadratic Residues and Quadratic Forms}
+\section{Quadratic Residues and Quadratic Forms}
 
 % taken from book Modern Olympiad Number Theory
 \begin{fact*}[Thue]
@@ -214,7 +219,7 @@ Let $a$ solve $a^2\equiv -1\mod p$. Applying Thue's result, let $x,y$ solve $ax\
 
 
 \newpage
-\section*{Algebraic Integers}
+\section{Algebraic Integers}
 
 
 \begin{fact*}
@@ -266,7 +271,7 @@ Then $A\otimes B\in \Z^{nm\times nm}$ and $A\otimes \id_n + \id_m\otimes B$ have
 
 
 \newpage
-\section*{Cyclotomics}
+\section{Cyclotomics}
 
 
 \begin{nomn*}
@@ -323,7 +328,7 @@ Let $\zeta=\zeta_{p^r}$, $K=\Q(\zeta)$, and $m=[K:\Q]$. We have
 
 
 \newpage
-\section*{Gauss Sums and Quadratic Reciprocity}
+\section{Gauss Sums and Quadratic Reciprocity}
 
 
 Let $p$ be an odd prime, $\eps_p=(-1)^{\frac{p-1}{2}}$, $p^*=\eps_p p$, $\zeta = e^{2\pi i/p}$. Now, we set
@@ -384,6 +389,23 @@ Let $p,q$ be distinct odd primes. Then $(p:q)(q:p)=\eps_p\eps_q$.
 \begin{proof}
 Let us consider $N_q(1) \mod q$. On one hand, $N_q(1)=p^{q-1} + (p^*)^{(q-1)/2} \equiv 1 + (p^*:q) \mod q$. On the other hand, the sphere $\{(x_1,\dots,x_q)\in\F_p^q : x_1^2+\dots+x_q^2=1\}$ is acted on by $C_q$ via cyclic rotations. It follows that $N_q(1) \equiv 1 + (q:p) \mod q$.
 \end{proof}
+
+
+\newpage
+\section{Beta Function}
+\begin{fact*}
+\[\int_0^1 p^k (1-p)^m = \dfrac{k!m!}{(k+m+1)!}\]
+\end{fact*}
+
+
+\begin{proof}
+Consider the following stochastic process. First, generate $p\sim U[0,1]$. Then, generate $n$ independent Bernoulli$(p)$ trials $b_1,\dots,b_n \sim \ber(p)$. What is the probability to have precisely $k$ successes? The answer, of course, is
+\[
+\int_0^1 \binom{n}{k}p^{k}(1-p)^{n-k} \d p
+\]
+\end{proof}
+However, instead of generating the $b_i$ as Bernoulli trials, let us generate $x_1,\dots,x_n\in U[0,1]$ and set $b_i = [x_i < p]$. Then, the questions asks what is the probability that precisely $k$ of the $n$ numbers $x_1,\dots,x_n$ come before $p$. Clearly, the ordering of $p,x_1,\dots,x_n$ is uniform over all permutations of $n+1$ terms, and so this probability is $\frac{1}{n+1}$ for each $k=0,\dots,n$.
+
 
 
 %\newpage
