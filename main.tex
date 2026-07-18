@@ -13,7 +13,8 @@
 \newtheorem*{nomn*}{Nomenclature}
 \newtheorem*{fact_plus_nomn*}{Fact + Nomenclature}
 \newtheorem*{exer*}{Exercise}
-
+\newtheorem{claim}{Claim}
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{theorem}{Theorem}
 \newtheorem{conjecture}{Conjecture}
 \newtheorem{proposition}{Proposition}
@@ -26,10 +27,13 @@
 \newcommand{\eps}{\varepsilon}
 \DeclareMathOperator{\id}{id}
 \renewcommand{\d}{\mathrm{d}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\q}{\mathfrak{q}}
 \DeclareMathOperator{\ber}{Ber}
 \newcommand{\C}{\mathbf{C}}
 \newcommand{\F}{\mathbf{F}}
 \newcommand{\Q}{\mathbf{Q}}
+\newcommand{\R}{\mathbf{R}}
 \newcommand{\Z}{\mathbf{Z}}
 \newcommand{\OO}{\mathcal{O}}
 
@@ -316,15 +320,92 @@ Let $\zeta=\zeta_{p^r}$, $K=\Q(\zeta)$, and $m=[K:\Q]$. We have
 \begin{itemize}
     \item $N_{K/\Q}(1-\zeta)=p$
     
-    \item $(1-\zeta)\OO_K \cap \Z = p\Z$
+    \item $\gen{1-\zeta}$ is a prime ideal, lying over $p$. $(1-\zeta)\OO_K \cap \Z = p\Z$
 
     \item $(1-\zeta^j)/(1-\zeta)\in\OO_K^\times$ for all $j\in(\Z/p^r\Z)^{\times}$
     
     \item $p\OO_K = (1-\zeta)^m \OO_K$
     
     \item $\Z[\zeta] \cap p\OO_K = p\Z[\zeta]$
+    
+    \item $\OO_K = \Z[\zeta]$
 \end{itemize}
 \end{fact*} % this is taken from https://virtualmath1.stanford.edu/~conrad/154Page/handouts/cycint.pdf where they use it to show O_K=Z[zeta] using discriminants
+% but perhaps we can also use traces for this?
+
+
+\newpage
+\section{Fermat's Last Theorem}
+\begin{theorem*}(Wiles, Taylor, Taniama, Shimura, Ribet, Frey, \dots, Fermat)
+Let $n\ge 3$. Then, any solution in rational numbers to the equation \[x^n+y^n=z^n\]
+is trivial, in the sense that $xyz=0$.
+\end{theorem*}
+
+
+\begin{exer*}
+It suffices to prove the case $n=4$ and the cases where $n=p$ is an odd prime. Also, we may assume $x,y,z$ are pairwise relatively prime.
+\end{exer*}
+
+
+\begin{exer*}
+There are algebraic integers on the unit circle other than the roots of unity.
+\end{exer*}
+
+
+% \begin{proof}
+% Let $f(z)=z^4-2z^3-2z+1$. $f$ has two real roots and a pair of conjugate roots (calculus). But $f$ has symmetric coefficients, meaning its roots are closed under taking inverse. So $f$ has two roots on the unit circle. $f$ is irreducible over $\Q$ (for example, $f(x+1)$ is Eisenstein), and is distinct from any cyclotomic polynomial (recall that $\phi(n)\ge \sqrt{n}$ for $n>6$).
+% \end{proof}
+
+
+However, such numbers have conjugates outside the unit circle.
+
+
+\begin{fact*}
+Suppose $f(x)=\prod_\alpha(x-\alpha)\in\Z[x]$ is a monic polynomial with integer coefficients, all of whose roots lie in the closed unit circle. Then each roots $\alpha$ is either zero or a root of unity.
+\end{fact*}
+
+
+\begin{proof}
+Without loss of generality $f(x)$ is irreducible, so it has no repeated roots. Let $A$ be the companion matrix. Then $A$ is diagonable, with eigenvalues all of absolute value at most one. Thus the matrices $(A^n)_{n\ge 1}$ are bounded. However, these are integer matrices. By the pigeonhole principle, we have $A^n = A^{n+k}$ for some $k>0$. It follows that $\alpha^n=\alpha^{n+k}$, so either $\alpha=0$ or $\alpha$ is a $k$-th root of unity.
+\end{proof}
+
+
+\begin{fact*}
+Any unit $u$ of $\Q(\zeta_p)$ may be written as $u=r\zeta^k$ for some real $r$ and some integer $k$.
+\end{fact*}
+
+
+\begin{fact*}
+For any $\alpha\in\Z[\zeta_p]$ there is an integer $a$ with $\alpha^p \equiv a \mod \gen{1-\zeta}^p$. 
+\end{fact*}
+
+
+\begin{fact*}[Kummer]
+Let $p$ be a regular prime. Then the $n=p$ case of FLT is true.
+\end{fact*}
+
+
+\begin{proof}
+Let us write the equation in the form \[x^p+y^p+z^p=0\]
+We have 
+\[\prod_{j=0}^{p-1}(x+\zeta^j y) = x^p + y^p = -z^p\]
+And so 
+\[\prod_{j=0}^{p-1}\gen{x+\zeta^j y} = \gen{z}^p\]
+First let us handle the case $p\nmid xyz$. \\
+Claim. We claim that $\gen{x+\zeta^j y}$ are pairwise coprime. \\
+Indeed, suppose $\q \mid \gen{x+\zeta^j y}$, $\q \mid \gen{x+\zeta^k y}$. Then $x+\zeta^j y, x+\zeta^k y\in \q$. Thus $ \zeta^k(1-\zeta^{k-j})y\in\q$ $\implies$ $y\in\q$ or $1-\zeta^t \in \q$. However, if $y\in\q$ then $x\in\q$, but this contradicts $x,y$ being coprime. It follows that $1-\zeta^t \in\q$. Now $1-\zeta^t \sim 1-\zeta$, and $\gen{1-\zeta}$ is prime, so $\q = \gen{1-\zeta}$. Thus $z\in\gen{1-\zeta}$. Since $N(\gen{1-\zeta})=p$, we get $p\mid z$, contradicting our hypothesis. \\
+It follows that each of the ideals $\gen{x+\zeta^j y}$ is a $p$-th power. Now let $\gen{x+\zeta y} = \m^p$. So $\m$ has order dividing $p$ in the class group. Since $p$ is regular, $\m=\gen{\alpha}$ must be principal. We have \[x+\zeta y = u\alpha^p\]
+for some unit $u$. We may write $u=r\zeta^k$ for some real $r$ and integer $k$. We find an integer $a$ with $\alpha^p\equiv a\mod \gen{1-\zeta}^p$ so $\alpha^p \equiv a\mod p$ and hence $x+\zeta y \equiv r\zeta^k a \mod p$. Inverting by $\zeta^k$ and conjugating, we find
+\[\zeta^{-k}(x+\zeta y) - \zeta^{k}(x+\zeta^{-1} y) \equiv 0 \mod p\]
+So consider the algebraic integer $\beta$ with 
+$\beta = p^{-1}\left(\zeta^{-k}x + \zeta^{1-k}y - \zeta^{k}x - \zeta^{k-1}y\right)$. Since $\OO_K = \Z[\zeta]$ has integer basis ($1,\zeta,\dots,\zeta^{p-1}$ minus any particular one), if $\zeta^{-k},\zeta^{1-k},\zeta^{k},\zeta^{k-1}$ were all distinct we'd get that $p\mid x,y$, contradicting our hypothesis. \\
+Case 1. We have $k\equiv 0\mod p$. In this case $\gen{1-\zeta}^{p-1}=\gen{p} \ni (\zeta-\zeta^-1)y = \zeta^{-1}(\zeta^2-1)y$. Since $\zeta^2-1\sim 1-\zeta$, we have $y\in\gen{1-\zeta} \cap \Z = p\Z$, contradicting our hypothesis. \\
+Case 2. We have $k\equiv 1\mod p$. This is the same as the previous case with $y$ replaced by $x$. \\
+Case 3. We must have $2k\equiv 1\mod p$. Thus \[p\beta \zeta^k = (x-y)(1-\zeta)\]
+Taking norms, we have $p\mid x-y$. By symmetry, $x\equiv y\equiv z \mod p$ and so $0\equiv 3x^p \mod p$. Our assumption yields $p=3$. However, for $3\nmid x,y,z$ we have $0 = x^3+y^3+z^3 \equiv \pm1\pm1\pm1 \mod 9$, a contradiction. \\
+
+TODO handle case $p\mid xyz$ and prove lemmas. % https://wstein.org/129-05/final_papers/Emily_Riehl.pdf
+\end{proof}
 
 
 \newpage
@@ -435,7 +516,7 @@ The field extension $\F_{q^m}/\F_q$ is cyclic; The Galois group is generated by 
 
 %   good refs:  http://gaetan.chenevier.perso.math.cnrs.fr/GT/ireland_rosen.pdf
 %               https://virtualmath1.stanford.edu/~conrad/154Page/handouts.html
-%               Ben Green, Brian Conrad, De Shalit
+%               Ben Green, Brian Conrad, Keith Conrad, De Shalit
 %               https://nsnyder1.pages.iu.edu/thesismain.pdf
 %               (elementary intro to langlands) https://www.ams.org/journals/bull/1984-10-02/S0273-0979-1984-15237-6/S0273-0979-1984-15237-6.pdf
 %               other ideas: english translations of the books of Gauss+Dirichlet
