@@ -24,12 +24,17 @@
 \newtheorem{defn}{Definition}
 \newtheorem{example}{Example}
 
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\DeclareMathOperator{\aut}{Aut}
 \DeclareMathOperator{\ber}{Ber}
 \newcommand{\eps}{\varepsilon}
 \DeclareMathOperator{\id}{id}
 \renewcommand{\d}{\mathrm{d}}
+\newcommand{\gen}[1]{\langle#1\rangle}
 \newcommand{\m}{\mathfrak{m}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\q}{\mathfrak{q}}
+\DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\trace}{Tr}
 
 \newcommand{\C}{\mathbf{C}}
@@ -41,8 +46,6 @@
 \newcommand{\OO}{\mathcal{O}}
 
 
-\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
-\newcommand{\gen}[1]{\langle#1\rangle}
 
 
 \begin{document}
@@ -569,7 +572,136 @@ is non-singular.
 This allows us to define the irreducible characters of $G$ via the orthogonal idempotents of $Z(\C[G])$, and (I should check) show properties like orthogonality. Only later did Frobenius come up with the notion of a representation.
 
 
+\begin{exer*}
+Find the idempotents for $G=S_3$, the first non-abelian group.
+\end{exer*}
 
+\newpage
+\section{Absolute Values and Valuations}
+
+
+\begin{nomn*}
+Let $K$ be a field. An \underline{absolute value} on $K$ is a function $\abs{\cdot} : K\to \R_{\ge0}$ satisfying the properties
+\begin{enumerate}
+    \item $\abs{x} = 0 \iff x = 0$
+    \item $\abs{xy} = \abs{x}\abs{y}$
+    \item $\abs{x+y} \le \abs{x} + \abs{y}$
+\end{enumerate}
+for all $x,y\in K$. \\
+If $\abs{x+y} \le \max(\abs{x},\abs{y})$ for all $x,y\in K$, we call $\abs{\cdot}$ a \underline{valuation}. 
+\end{nomn*}
+
+
+We have $\abs{\pm 1} = 1$ (and in fact $\abs{\zeta}=1$ for any root of unity $\zeta$). We have $\abs{x^{-1}} = \abs{x}^{-1}$. An absolute value equips $K$ with the metric $d_{\abs{\cdot}}(x,y) = \abs{x-y}$. The trivial absolute value is $\abs{x} = [x \neq 0]$. Raising an absolute value to a power $\lambda \in (0,1]$ yields an absolute value. Raising a valuation to a power $\lambda\in(0,\infty)$ yields a valuation.
+
+
+\begin{fact*}
+Two absolute values $\abs{\cdot}_1, \abs{\cdot}_2$ enrich $K$ with the same topology if and only if there exists some $\lambda > 0$ with $\abs{x}_2 = \abs{x}_1^\lambda$ for all $x\in K$.
+\end{fact*}
+
+
+\begin{proof}
+The if direction is clear, so we show the only if direction. The set $\{x:\abs{x}_1 < 1\}$ is the set $\{x : \lim_n x^n = 0\}$, so it is determined by the topology. Thus the topology also determines the inverse set $\{x : \abs{x}_1 > 1\}$, as well as $\{x:\abs{x} = 1\}$. We may assume $\abs{\cdot}$ is non-trivial, and fix $y$ with $a=\abs{y}_1 > 1$ and $b=\abs{y}_2 > 1$. Let $x\in K^\times$, and write $\abs{x}_1 = a^\alpha$ for some $\alpha\in\R$. If $q=m/n$ is a rational number with $q<\alpha$, then $\abs{x}_1 > a^q \implies \abs{x^n}_1 > a^m = \abs{y^m}_1\implies \abs{x^n y^{-m}}_1 > 1 \implies \abs{x^ny^{-m}}_2 > 1 \implies \abs{x}_2 > b^q$.
+Similarly, we have that $\abs{x}_2 < b^q$ for all rational numbers $q$ with $q>\alpha$. Thus $\abs{x}_2 = b^\alpha = \abs{x}_1^{\lambda}$ where $\lambda=\log b / \log a$.
+\end{proof}
+
+
+\begin{fact*}
+Let $\abs{\cdot}$ be a valuation. Then we have $\abs{x}\neq\abs{y} \implies \abs{x+y} = \max(\abs{x},\abs{y})$.
+\end{fact*}
+
+
+\begin{fact*}
+Let $\abs{\cdot}$ be an absolute value on $K$. Then $\abs{\cdot}$ is a valuation if and only if the integers are bounded (meaning $\abs{n} \le C$ for all integers $n$ and some constant $C$).
+\end{fact*}
+
+
+\begin{proof}
+The only if direction is clear, so we show the if direction. Let $x,y\in K$. Then \[\abs{x+y}^n = \abs{(x+y)^n} = \abs{\sum_{k}\binom{n}{k}x^k y^{n-k}} \le \sum_k \abs{\binom{n}{k}}\abs{x}^k\abs{y}^{n-k} \le (n+1)C\max(\abs{x},\abs{y})^n\]
+taking $n$-th root and a limit we get $\abs{x+y}\le \max(\abs{x},\abs{y})$.
+\end{proof}
+
+
+\begin{fact*}
+Let $\abs{\cdot}$ be a valuation, and let $r>0$. Then any point 
+\end{fact*}
+
+
+\begin{nomn*}
+Let $K$ be a field, let $\abs{\cdot}$ be an absolute value on $K$, and let $V$ be a vector space over $K$. A \underline{norm} on $V$ is a function $\norm{\cdot}:V\to\R_{\ge0}$ satisfying the properties
+\begin{enumerate}
+    \item $\norm{v}=0 \iff v = 0$
+    \item $\norm{\alpha v} = \abs{\alpha}\norm{v}$
+    \item $\norm{u+v} \le \norm{u} + \norm{v}$
+\end{enumerate}
+for all vectors $u,v\in V$ and scalars $\alpha\in K$.
+\end{nomn*}
+
+
+A pair of norms $\norm{\cdot}_1,\norm{\cdot}_2$ on $V$ are called \underline{equivalent} if there are constants $c,C>0$ such that \[ c\norm{v}_2 \le \norm{v}_1 \le C\norm{v}_2\]
+for all $v\in V$.
+
+ 
+\begin{fact*}
+Assume $K$ is complete and $V$ is finite dimensional. Then, any two norms on $V$ are equivalent, and any norm is complete.
+\end{fact*}
+
+
+\begin{proof}
+By induction on $d=\dim V$. The cases $d=0,1$ are clear, so let $d\ge 2$. Let $\norm{\cdot}$ be any norm on $V$. Let us fix a basis $e_1,\dots,e_d$ of $V$, and define
+\[\norm{v}_\infty = \max(\abs{x_i})\]
+where $v=x_1e_1+\dots+x_de_d$. Then $\norm{\cdot}_\infty$ is indeed a norm on $V$, and it will suffice to show that $\norm{\cdot},\norm{\cdot}_\infty$ are equivalent, and that $\norm{\cdot}_\infty$ is complete. For completeness, we note that a sequence of vectors is Cauchy under $\norm{\cdot}_\infty$ if and only if each of the $d$ coordinates is Cauchy, and the same goes for convergence. So let us show that $\norm{\cdot},\norm{\cdot}_\infty$ are equivalent. We have one inequality
+\[\norm{v} \le (\norm{e_1}+\dots+\norm{e_n})\norm{v}_\infty\]
+for all $v\in V$. Suppose, for the sake of contradiction, that we do not have a constant $c>0$ with 
+\[c\norm{v}_\infty\le \norm{v}\]
+for all $v\in V$.
+Then, we may find a sequence of vectors $(v_n)_n$ with $\norm{v_n}_\infty = 1$ and $\norm{v_n}\to 0$. 
+Restricting to a subsequence, we may assume that the $d$-th coordinate of each $v_n$ has absolute value $1$. 
+Dividing by those coordinates, we may assume that the $d$-th coordinate of each $v_n$ is $1$. 
+Write $v_n=e_d+u_n$ where $u_n\in\spn(e_1,\dots,e_{d-1})$. We get that $u_n$ converges to $-e_n$ under $\norm{\cdot}$. However,
+by induction, the resticted norm $\norm{\cdot}$ on $\spn(e_1,\dots,e_{d-1})$ is complete, and so $\spn(e_1,\dots,e_{d-1})$ is closed in $V$ under $\norm{\cdot}$. This implies $-e_n\in \spn(e_1,\dots,e_{d-1})$, a contradiction. 
+\end{proof}
+
+
+\begin{fact*}
+Let $\abs{\cdot}$ be a valuation on $K$. Then any point in any ball is the center of the ball.
+\end{fact*}
+
+
+\begin{fact*}
+Let $K$ be a complete field under the absolute value $\abs{\cdot}$. Suppose $E/K$ is a finite field extension. Then there is at most one extension of the absolute value $\abs{\cdot}$ to an absolute value of $K$. 
+%(TODO show there is one). the proofs in the literature (eg https://math.stanford.edu/~conrad/676Page/handouts/ostrowski.pdf) seem a bit sad, in the sense that it uses Hensel's lemma and that complete Archimedean means R/C. 
+\end{fact*}
+
+
+
+\newpage
+\section{Galois Theory}
+\begin{fact*}
+Let $G$ be a group, and let $F$ be a field. Then, the set of group homomorphisms $G\to F^\times$ is linearly independent over $F$.
+\end{fact*}
+
+
+\begin{proof}
+Suppose, for the sake of contradiction, that $\chi_1,\dots,\chi_d : G\to F^\times$ are distinct homomorphisms that are linearly dependent. 
+We may further assume that $d$ is minimal. 
+Let $a_1,\dots,a_d$ be scalars, not all zero, with \[a_1\chi_1 + \dots + a_d\chi_d = 0\]
+By the minimality of $d$, we have that all the $a_i$ are non-zero. 
+Now, setting $g\leftarrow hg$ we have
+\[a_1\chi_1(h)\chi_1 + \dots + a_d\chi_d(h)\chi_d = 0\]
+for each $h\in G$. By the minimality of $d$, the two equations must be scalar multiples of one another. Thus $\chi_1(h)=\dots=\chi_d(h)$. Since $h$ is arbitrary, $\chi_1=\dots=\chi_d$. So $d=1$ and $\chi_1=0$, which is nonsense.
+\end{proof}
+
+
+\begin{nomn*}
+We set
+$\aut(L/K) := \{\varphi: L\to L \text{ is a field isomorphism, } \varphi\restriction_{K} = \id_K\}$.
+\end{nomn*}
+
+
+% \begin{fact*}
+% Let $L/K$ be a finite field extension of degree $d$. Then $\#\aut(L/K) \le d$.
+% \end{fact*}
 
 %\newpage
 % Next lectures - 
