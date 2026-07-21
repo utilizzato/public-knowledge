@@ -2,7 +2,7 @@
 \setcounter{secnumdepth}{0}
 
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
 \usepackage{hyperref}
 
 \setlength{\parindent}{0pt}
@@ -30,14 +30,17 @@
 \newcommand{\eps}{\varepsilon}
 \DeclareMathOperator{\id}{id}
 \renewcommand{\d}{\mathrm{d}}
+\DeclareMathOperator{\ev}{ev}
 \newcommand{\gen}[1]{\langle#1\rangle}
 \newcommand{\m}{\mathfrak{m}}
+\DeclareMathOperator{\mspec}{mSpec}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\q}{\mathfrak{q}}
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\trace}{Tr}
 
 \newcommand{\C}{\mathbf{C}}
+\newcommand{\CC}{\mathscr{C}}
 \DeclareMathOperator{\End}{End}
 \newcommand{\F}{\mathbf{F}}
 \newcommand{\Q}{\mathbf{Q}}
@@ -712,6 +715,19 @@ If $K$ is finite then so is $L$, so we may choose $\alpha$ to generate the cycli
 % \begin{fact*}
 % Let $L/K$ be a finite field extension of degree $d$. Then $\#\aut(L/K) \le d$.
 % \end{fact*}
+
+\newpage
+\section{Commutative Banach Algebras}
+
+
+\begin{fact*}
+Let $X$ be a compact Hausdorff space. Then \[\boxed{\mspec \CC(X) \equiv X}\]
+\end{fact*}
+
+
+\begin{proof}
+For each $x\in X$, $\ev_x : X\to\C$, $\ev_x : f\mapsto f(x)$ is a homomorphism onto a field, so the kernel $\m_x = \{f\in\CC(X) : f(x) = 0\}$ is a maximal ideal. By normality, the $\m_x$ are distinct. Now let $\m$ be a maximal ideal. Suppose, for the sake of contradiction, that $\m\neq\m_x$ for each $x\in X$. Then we may pick $f_x\in \m$ with $f_x(x)\neq 0$. Let $U_x$ be a neighbourhood of $x$ where $f_x$ does not vanish. Find a finite cover $X= U_{x_1}\cup \dots\cup U_{x_n}$. Then $f=f_{x_1}\overline{f_{x_1}} + \dots + f_{x_n}\overline{f_{x_n}}$ satisfies that $f\in\m$ and $f>0$, so $f$ is invertible and $\m=\gen{1}$, a contradiction.
+\end{proof}
 
 %\newpage
 % Next lectures - 
