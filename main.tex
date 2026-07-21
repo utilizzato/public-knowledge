@@ -699,6 +699,16 @@ $\aut(L/K) := \{\varphi: L\to L \text{ is a field isomorphism, } \varphi\restric
 \end{nomn*}
 
 
+\begin{fact*}
+Let $L/K$ be a finite and separable field extension. Then $L=K(\alpha)$ for some $\alpha\in L$.
+\end{fact*}
+
+
+\begin{proof}
+If $K$ is finite then so is $L$, so we may choose $\alpha$ to generate the cyclic group $L^\times$. So we assume $K$ is infinite. Now, we may find an extension $M/L/K$ such that $M/K$ is Galois. In particular, the number of subfields $M/F/K$ is finite, and hence so is the number of subfields $L/F/K$. Suppose we have a simple extension $K(\alpha) \neq L$. Pick $\beta\in L\setminus K(\alpha)$. By the pigeonhole principle, the simple extensions $K(\alpha + t\beta)$ ranging over $t\in K$ must have a repetition. If $F=K(\alpha + t_1\beta) = K(\alpha + t_2\beta)$ with $t_1,t_2\in K$ distinct, then in particular $\alpha,\beta\in K$, so $F$ is a simple extension larger than $K(\alpha)$. But this can't go on forever.
+\end{proof}
+
+
 % \begin{fact*}
 % Let $L/K$ be a finite field extension of degree $d$. Then $\#\aut(L/K) \le d$.
 % \end{fact*}
