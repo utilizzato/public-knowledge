@@ -942,6 +942,24 @@ Let $X$ be a compact Hausdorff space. Then \[\boxed{\mspec \CC(X) \equiv X}\]
 For each $x\in X$, $\ev_x : X\to\C$, $\ev_x : f\mapsto f(x)$ is a homomorphism onto a field, so the kernel $\m_x = \{f\in\CC(X) : f(x) = 0\}$ is a maximal ideal. By normality, the $\m_x$ are distinct. Now let $\m$ be a maximal ideal. Suppose, for the sake of contradiction, that $\m\neq\m_x$ for each $x\in X$. Then we may pick $f_x\in \m$ with $f_x(x)\neq 0$. Let $U_x$ be a neighbourhood of $x$ where $f_x$ does not vanish. Find a finite cover $X= U_{x_1}\cup \dots\cup U_{x_n}$. Then $f=f_{x_1}\overline{f_{x_1}} + \dots + f_{x_n}\overline{f_{x_n}}$ satisfies that $f\in\m$ and $f>0$, so $f$ is invertible and $\m=\gen{1}$, a contradiction.
 \end{proof}
 
+
+% \newpage
+% \section{Haar Measure}
+% % https://web.math.princeton.edu/~naor/homepage%20files/localban.pdf
+
+
+% \begin{fact_plus_nomn*}
+% Let $(M,d)$ be a compact metric space. Call a subset $N_\eps$ a \underline{minimal $\eps$-net} if $\cup_{x\in N_\eps}B_\eps(x) = M$, and $\abs{N_\eps}$ is minimal possible with this property. Then, if $N_\eps,N_\eps'$ are both minimal $\eps$-nets, then there exists a bijection $\psi:N_\eps \too N_{\eps}'$ satisfying 
+% $d(x,\psi(x))\le 2\eps$ for all $x\in N_\eps$.
+% \end{fact_plus_nomn*}
+
+
+% \begin{proof}
+% Hall's marriage theorem, where we connect $x\in N_\eps$ with $y\in N_\eps'$ if $B_\eps(x)$ and $B_\eps(y)$ intersect.
+% \end{proof}
+
+
+
 %\newpage
 % Next lectures - 
 %               - Euclidean Algorithm, gcd, lcm, continued fractions
