@@ -81,8 +81,11 @@ Any non-empty subset of the positif integers contains a smallest element.
 
 \begin{fact_plus_nomn*}
 Let $d$ be a positive integer and $m$ be an integer. Then, there exists a unique pair of integers $q,r$ satisfying $m=dq+r$ and $0\le r < d$. We call $q$ the \underline{quotient} and $r$ the \underline{remainder} of the division of $m$ by $d$. When $r=0$, that is, when there exists an integer $q$ with $m=dq$, we say that $d$ \underline{divides} $m$, that $d$ is a \underline{divisor} of $m$, or that $m$ is \underline{divisible} by $d$, and we write this relation as $d\mid m$.
-
 \end{fact_plus_nomn*}
+
+\begin{exer*}
+Compute the multiplication tables modulo $n$ for $n=7,8,10$. Stare at them and look for patterns.
+\end{exer*}
 
 \begin{nomn*}
 An integer $p \ge 2$ is called a \underline{prime number} if its only divisors are $1$ and $p$. 
@@ -921,7 +924,9 @@ Let $L/K$ be a finite and separable field extension. Then $L=K(\alpha)$ for some
 
 
 \begin{proof}
-If $K$ is finite then so is $L$, so we may choose $\alpha$ to generate the cyclic group $L^\times$. So we assume $K$ is infinite. Now, we may find an extension $M/L/K$ such that $M/K$ is Galois. In particular, the number of subfields $M/F/K$ is finite, and hence so is the number of subfields $L/F/K$. Suppose we have a simple extension $K(\alpha) \neq L$. Pick $\beta\in L\setminus K(\alpha)$. By the pigeonhole principle, the simple extensions $K(\alpha + t\beta)$ ranging over $t\in K$ must have a repetition. If $F=K(\alpha + t_1\beta) = K(\alpha + t_2\beta)$ with $t_1,t_2\in K$ distinct, then in particular $\alpha,\beta\in K$, so $F$ is a simple extension larger than $K(\alpha)$. But this can't go on forever.
+If $K$ is finite then so is $L$, so we may choose $\alpha$ to generate the cyclic group $L^\times$. So we assume $K$ is infinite. Now, because $L/K$ is finite and separable, the number of subfields $L/F/K$ is finite.
+%we may find an extension $M/L/K$ such that $M/K$ is Galois. In particular, the number of subfields $M/F/K$ is finite, and hence so is the number of subfields $L/F/K$. 
+Suppose we have a simple extension $K(\alpha) \neq L$. Pick $\beta\in L\setminus K(\alpha)$. By the pigeonhole principle, the simple extensions $K(\alpha + t\beta)$ ranging over $t\in K$ must have a repetition. If $F=K(\alpha + t_1\beta) = K(\alpha + t_2\beta)$ with $t_1,t_2\in K$ distinct, then in particular $\alpha,\beta\in K$, so $F$ is a simple extension larger than $K(\alpha)$. But this can't go on forever.
 \end{proof}
 
 
