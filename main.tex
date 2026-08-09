@@ -24,10 +24,13 @@
 \newtheorem{defn}{Definition}
 \newtheorem{example}{Example}
 
+\renewcommand{\a}{\mathfrak{a}}
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\DeclareMathOperator{\alg}{alg}
 \DeclareMathOperator{\aut}{Aut}
 \newcommand{\btr}{$\blacktriangleright$ }
 \DeclareMathOperator{\ber}{Ber}
+\DeclareMathOperator{\disc}{disc}
 \newcommand{\eps}{\varepsilon}
 \DeclareMathOperator{\id}{id}
 \renewcommand{\d}{\mathrm{d}}
@@ -42,6 +45,7 @@
 \DeclareMathOperator{\supp}{supp}
 \newcommand{\too}{\longrightarrow}
 \DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\vol}{vol}
 \newcommand{\vphi}{\varphi}
 
 \newcommand{\C}{\mathbf{C}}
@@ -796,7 +800,73 @@ Find the idempotents for $G=S_3$, the first non-abelian group.
 \end{exer*}
 
 \newpage
-\section{Absolute Values and Valuations}
+\section{The Diophantine equation \texorpdfstring{$y^2=x^3-2$}{}}
+
+Let $x,y\in\Z$ solve $y^2=x^3-2$. We wish to show that $x=3,y=\pm5$. We rewrite 
+\[
+x^3 = (y+\sqrt{-2})(y-\sqrt{-2})\]
+This suggests working in the ring $\Z[\sqrt{-2}]$. This ring is Euclidean, and so a UFD. Let us show that $y+\sqrt{-2},y-\sqrt{-2}$ are coprime. Suppose, for the sake of contradiction, that we have $\pi \mid y+\sqrt{-2}$ and $\pi \mid y-\sqrt{-2}$ for some prime element $\pi$ of $\Z[\sqrt{-2}]$. Then $\pi \mid 2y$, so either $\pi\mid 2$ or $\pi \mid y$. Now $\sqrt{-2}$ is a prime element of $\Z[\sqrt{-2}]$, so in either case $\pi\sim \sqrt{-2} \mid y$. Hence $2\mid y$. Thus $2\mid x$. Modulo four, we get $0\equiv y^2 = x^3 - 2 \equiv 2 \mod 4$, a contradiction. \\
+Since $y+\sqrt{-2}, y-\sqrt{-2}$ are coprime, we have
+\[y\pm \sqrt{-2} = \eps_{\pm} z_{\pm}^3\]
+for units $\eps$ and some $z\in\Z[\sqrt{-2}]$. The only units are $\pm1$, which are cubes, so we may remove the $\eps$ term. So let us consider \[y+\sqrt{-2} = (a+b\sqrt{-2})^3 = (a^3-6ab^2) + \sqrt{-2}(3a^2b-2b^3)\]
+We get $1=3a^2b-2b^3$, so $b=\pm 1$. Also, modulo three, we have $b\equiv 1 \mod 3$. So $b=1$, and thus $a=\pm1$. There are two solutions for $y$, namely $\pm 5$, and $x=3$.
+
+
+\newpage
+\section{The Diophantine equation \texorpdfstring{$x^2+7=2^n$}{}}
+
+Let $x,n$ be integers with $x^2+7=2^n$. We claim that $(x,n) = (\pm1,3),(\pm3,4),(\pm5,5),(\pm11,7),(\pm181,15)$.
+
+
+First, if $n=2k$ is even, then $7=(2^k+x)(2^k-x)$, so $2^k\pm x=7$ and $2^k\mp x=1$, yielding The solution $(\pm3,4)$. In general, we have $(x+\sqrt{-7})(x-\sqrt{-7})=2^n$. Suggesting to work in the ring of integers of $\Q(\sqrt{-7})$. This is Euclidean, so a UFD. Now $\sqrt{-7}, \dfrac{1\pm\sqrt{-7}}{2}$ are non-associate irreducible elements, $\pm1$ are the only units, and $2=\dfrac{1+\sqrt{-7}}{2}\dfrac{1-\sqrt{-7}}{2}$. We may assume $n\ge 5$ is odd, and of course $x$ is odd. 
+We have $\dfrac{x + \sqrt{-7}}{2} \cdot \dfrac{x - \sqrt{-7}}{2} = \left(\dfrac{1+\sqrt{-7}}{2} \right)^m \left(\dfrac{1-\sqrt{-7}}{2} \right)^m$, where $m=n-2$. We see that $\dfrac{x\pm\sqrt{7}}{2}$ must be coprime and conjugate, so either
+$\dfrac{x + \sqrt{-7}}{2} = \pm\alpha^m$ and $\dfrac{x - \sqrt{-7}}{2} = \pm\beta^m$
+or 
+$\dfrac{x + \sqrt{-7}}{2} = \pm\beta^m$ and $\dfrac{x - \sqrt{-7}}{2} = \pm\alpha^m$.  Thus $\alpha^m - \beta^m = \pm\sqrt{-7}=\pm(\alpha-\beta)$.
+We claim we cannot have $+$. Indeed, we have $\alpha+\beta=1$ and $\alpha\beta=2$. Thus $\alpha^2\equiv 1\mod \beta^2$. Thus $\alpha-\beta=\alpha^m-\beta^m \equiv \alpha \mod \beta^2$, nonsense. So $-\sqrt{-7} = \alpha^m-\beta^m$. Using the binomial expansion, we get $-2^{m-1}\equiv m\mod 7$. Since $m$ is also even, and the multiplicative order of $2$ modulo $7$ is three, we have that $m\equiv 3,5,13$ modulo $42$. We have solutions $m=3,5,13$. Suppose we have two solutions $m_1,m_2$ equivalent modulo $42$, with $m_2>m_1$. Write $k=m_2-m_1=6\cdot 7^l s$ where $7\nmid s$.
+Now, we have 
+\[(1+\sqrt{-7})^k \equiv 1+k\sqrt{-7} \mod 7^{l+1}\]
+\[2^k\equiv 1\mod 7^{l+1}\]
+So we get $k (\alpha^{m_1}+\beta^{m_1})\sqrt{-7} \equiv 0\mod 7^{l+1}$, which is easily a contradiction.
+
+
+
+
+\newpage
+\section{Minkowski's Theorem}
+
+
+\begin{fact*}
+Let $E$ be an $n$-dimensional Euclidean space, $\Gamma$ be a full lattice in $E$, and $X$ a centrally symmetric, convex subset of $E$. If moreover 
+\[\vol(X) > 2^n \vol(\Gamma)\]
+then $X$ contains a non-zero point of $\Gamma$.
+\end{fact*}
+
+
+\begin{proof}
+Suppose not. Let $P$ be a fundamental parallelepiped of $2\Gamma$. The map $\Phi : E\too E/(2\Gamma) \cong P$ is injective on $X$.
+Then $X = \bigsqcup_{\gamma\in 2\Gamma} X_\gamma$ where $X_\gamma = (X \cap (P+\gamma))$. Thus $\Phi(X) = \bigsqcup_{\gamma\in 2\Gamma} \Phi(X_\gamma)$. However, $\vol(\Phi(X_\gamma)) = \vol(X_\gamma)$, so $\vol(X) = \vol(\Phi(X))\le \vol(P) = \vol(\Gamma)/2^n$.
+\end{proof}
+
+
+\begin{fact*}
+Let $K$ be a number field of dimension $n$, and $\Phi : K \to \R^{r_1}\times \C^{r_2}\equiv R^n$ be its embeddings. Then $\Phi(\OO_K)$ is a lattice of volume $2^{-r_2}\sqrt{\disc_K}$. 
+More generally, $\Phi(\a)$ is a lattice of volume $2^{-r_2}\sqrt{\disc_K}N(\a)$.
+\end{fact*}
+
+
+\begin{fact*}
+Let $K$ be a number field, $\a$ a non-zero ideal in $\OO_K$. Then there is some $x\in\a$, $x\neq 0$, with $\abs{N_{K/\Q}(x)} \le M_K N(\a)$.
+\end{fact*}
+
+
+\begin{proof}
+(Sketch). Work with the set $B_r = \{(x_1,\dots,x_{r_1},z_1,\dots,z_{r_2})\in\R^{r_1}\times\C^{r_2}:\sum \abs{x_i} + 2\sum\abs{z_j}\le r\}$.
+\end{proof}
+
+
+\newpage
+\section{Absolute Values}
 
 
 \begin{nomn*}
@@ -807,11 +877,11 @@ Let $K$ be a field. An \underline{absolute value} on $K$ is a function $\abs{\cd
     \item $\abs{x+y} \le \abs{x} + \abs{y}$
 \end{enumerate}
 for all $x,y\in K$. \\
-If $\abs{x+y} \le \max(\abs{x},\abs{y})$ for all $x,y\in K$, we call $\abs{\cdot}$ a \underline{valuation}. 
+If $\abs{x+y} \le \max(\abs{x},\abs{y})$ for all $x,y\in K$, we call $\abs{\cdot}$ \underline{non-Archimedean}. 
 \end{nomn*}
 
 
-We have $\abs{\pm 1} = 1$ (and in fact $\abs{\zeta}=1$ for any root of unity $\zeta$). We have $\abs{x^{-1}} = \abs{x}^{-1}$. An absolute value equips $K$ with the metric $d_{\abs{\cdot}}(x,y) = \abs{x-y}$. The trivial absolute value is $\abs{x} = [x \neq 0]$. Raising an absolute value to a power $\lambda \in (0,1]$ yields an absolute value. Raising a valuation to a power $\lambda\in(0,\infty)$ yields a valuation.
+We have $\abs{\pm 1} = 1$ (and in fact $\abs{\zeta}=1$ for any root of unity $\zeta$). We have $\abs{x^{-1}} = \abs{x}^{-1}$. An absolute value equips $K$ with the metric $d_{\abs{\cdot}}(x,y) = \abs{x-y}$. The trivial absolute value is $\abs{x} = [x \neq 0]$. Raising an absolute value to a power $\lambda \in (0,1]$ yields an absolute value. Raising a non-Archimedean absolute value to a power $\lambda\in(0,\infty)$ yields a non-Archimedean absolute value.
 
 
 \begin{fact*}
@@ -826,12 +896,12 @@ Similarly, we have that $\abs{x}_2 < b^q$ for all rational numbers $q$ with $q>\
 
 
 \begin{fact*}
-Let $\abs{\cdot}$ be a valuation. Then we have $\abs{x}\neq\abs{y} \implies \abs{x+y} = \max(\abs{x},\abs{y})$.
+Let $\abs{\cdot}$ be a non-Archimedean absolute value. Then we have $\abs{x}\neq\abs{y} \implies \abs{x+y} = \max(\abs{x},\abs{y})$.
 \end{fact*}
 
 
 \begin{fact*}
-Let $\abs{\cdot}$ be an absolute value on $K$. Then $\abs{\cdot}$ is a valuation if and only if the integers are bounded (meaning $\abs{n} \le C$ for all integers $n$ and some constant $C$).
+Let $\abs{\cdot}$ be an absolute value on $K$. Then $\abs{\cdot}$ is non-Archimedean if and only if the integers are bounded (meaning $\abs{n} \le C$ for all integers $n$ and some constant $C$).
 \end{fact*}
 
 
@@ -839,11 +909,6 @@ Let $\abs{\cdot}$ be an absolute value on $K$. Then $\abs{\cdot}$ is a valuation
 The only if direction is clear, so we show the if direction. Let $x,y\in K$. Then \[\abs{x+y}^n = \abs{(x+y)^n} = \abs{\sum_{k}\binom{n}{k}x^k y^{n-k}} \le \sum_k \abs{\binom{n}{k}}\abs{x}^k\abs{y}^{n-k} \le (n+1)C\max(\abs{x},\abs{y})^n\]
 taking $n$-th root and a limit we get $\abs{x+y}\le \max(\abs{x},\abs{y})$.
 \end{proof}
-
-
-\begin{fact*}
-Let $\abs{\cdot}$ be a valuation, and let $r>0$. Then any point 
-\end{fact*}
 
 
 \begin{nomn*}
@@ -883,13 +948,28 @@ by induction, the resticted norm $\norm{\cdot}$ on $\spn(e_1,\dots,e_{d-1})$ is 
 
 
 \begin{fact*}
-Let $\abs{\cdot}$ be a valuation on $K$. Then any point in any ball is the center of the ball.
+Let $\abs{\cdot}$ be a non-Archimedean absolute value on $K$. Then any point in any ball is the center of the ball.
 \end{fact*}
 
 
 \begin{fact*}
-Let $K$ be a complete field under the absolute value $\abs{\cdot}$. Suppose $E/K$ is a finite field extension. Then there is at most one extension of the absolute value $\abs{\cdot}$ to an absolute value of $K$. 
-%(TODO show there is one). the proofs in the literature (eg https://math.stanford.edu/~conrad/676Page/handouts/ostrowski.pdf) seem a bit sad, in the sense that it uses Hensel's lemma and that complete Archimedean means R/C. 
+Any absolute value on $\Q$ is either trivial, equivalent to the usual absolute value, or equivalent to the $p$-adic absolute value.
+\end{fact*}
+
+
+\begin{fact*}
+Let $K$ be a complete field under an Archimedean absolute value $\abs{\cdot}$. Then $K,\abs{\cdot}$ is isomorphic to either $\R$ or $\C$ with the usual absolute value.
+\end{fact*}
+
+
+\begin{proof}
+(Sketch). Suppose $K$ extends $\C$ with the usual absolute value, and $K\neq \C$. Let $z\in K\setminus\C$. We may find $\lambda\in\C$ closest to $z$, using compactness of closed balls in $\C$. Without loss of generality, we may assume $\lambda=0$. Set $m=\abs{z}$. So $m>0$ and $\abs{z-\alpha} \ge m$ for all $\alpha\in\C$. Now suppose $\abs{\alpha} < m$. Then $z^n-\alpha^n = \prod (z-\zeta^i \alpha)$ so $\abs{z-\alpha} m^{n-1} \le m^n + \abs{\alpha}^n$ so $\abs{z-\alpha} = m$. This clearly means $\abs{z-\alpha}=m$ for all $\alpha\in\C$, making $\abs{\cdot}$ bounded on $\C$.
+\end{proof}
+
+
+\begin{fact*}
+Let $K$ be a complete field under the absolute value $\abs{\cdot}$. Suppose $E/K$ is a finite field extension. Then there is exactly one extension of the absolute value $\abs{\cdot}$ to an absolute value of $K$.
+%(TODO show there is one). the proofs in the literature (eg https://math.stanford.edu/~conrad/676Page/handouts/ostrowski.pdf) uses Hensel's lemma and that complete Archimedean means R/C. 
 \end{fact*}
 
 
@@ -930,6 +1010,20 @@ Suppose we have a simple extension $K(\alpha) \neq L$. Pick $\beta\in L\setminus
 \end{proof}
 
 
+\begin{fact*}
+Suppose $L/K$ and $L'/K$ are Galois. Then so is $LL'/K$.
+\end{fact*}
+
+
+\begin{fact*}
+Suppose $L/K$ is Galois, and $L'/K$ is finite. Then $[LL' : L'] = [L : L\cap L']$.
+\end{fact*}
+
+
+\begin{fact*}
+Suppose two finite field extensions $L/K$ and $L'/K$ (inside some $L^{\alg}$) have $L\cap L'=K$, and at least one is Galois. Then $[LL' : K] = [L:K][L':K]$.
+\end{fact*}
+
 % \begin{fact*}
 % Let $L/K$ be a finite field extension of degree $d$. Then $\#\aut(L/K) \le d$.
 % \end{fact*}
@@ -946,6 +1040,22 @@ Let $X$ be a compact Hausdorff space. Then \[\boxed{\mspec \CC(X) \equiv X}\]
 \begin{proof}
 For each $x\in X$, $\ev_x : X\to\C$, $\ev_x : f\mapsto f(x)$ is a homomorphism onto a field, so the kernel $\m_x = \{f\in\CC(X) : f(x) = 0\}$ is a maximal ideal. By normality, the $\m_x$ are distinct. Now let $\m$ be a maximal ideal. Suppose, for the sake of contradiction, that $\m\neq\m_x$ for each $x\in X$. Then we may pick $f_x\in \m$ with $f_x(x)\neq 0$. Let $U_x$ be a neighbourhood of $x$ where $f_x$ does not vanish. Find a finite cover $X= U_{x_1}\cup \dots\cup U_{x_n}$. Then $f=f_{x_1}\overline{f_{x_1}} + \dots + f_{x_n}\overline{f_{x_n}}$ satisfies that $f\in\m$ and $f>0$, so $f$ is invertible and $\m=\gen{1}$, a contradiction.
 \end{proof}
+
+
+\newpage
+\section{Zeta Functions}
+% taken from https://zevchonoles.org/math/pdf/course-notes/weinstein-analytic-class-number-formula.pdf
+\begin{exer*}
+Find formulas for $\zeta_K$ where $K=\Q(i)$. Deduce that $r_2(n) = \sum_{d\mid n}\chi(d)$ where $\chi$ is the non-trivial multiplicative character modulo four. Deduce the Gregory series.
+\end{exer*}
+
+\begin{exer*}
+Find formulas for $\zeta_K$ where $K=\Q(\sqrt{-2})$. Deduce that $\sum_{n}\chi(n)/n = \pi/2^{3/2}$ where $\chi(n) = 1$ for $n\equiv 1,3\mod 8$ and $\chi(n) = -1$ for $n\equiv 5,7\mod 8$.
+\end{exer*}
+
+\begin{exer*}
+Apply Minkowski's theorem to show the following. If $(-5:p)=1$, then either $p=x^2+5y^2$ or $2p=x^2+5y^2$.
+\end{exer*}
 
 
 % \newpage
@@ -986,6 +1096,9 @@ For each $x\in X$, $\ev_x : X\to\C$, $\ev_x : f\mapsto f(x)$ is a homomorphism o
 %               Ben Green, Brian Conrad, Keith Conrad, De Shalit
 %               https://nsnyder1.pages.iu.edu/thesismain.pdf
 %               (elementary intro to langlands) https://www.ams.org/journals/bull/1984-10-02/S0273-0979-1984-15237-6/S0273-0979-1984-15237-6.pdf
+%               https://www.math.utoronto.ca/~ila/Algebraic%20Number%20Fields%20(%20PDFDrive%20).pdf
+%               https://archive.math.arizona.edu/cais/scans/Cassels-Frohlich-Algebraic_Number_Theory.pdf
+%               https://kskedlaya.org/papers/cft-ptx.pdf
 %               other ideas: english translations of the books of Gauss+Dirichlet
 \end{document}
 
@@ -996,3 +1109,8 @@ For each $x\in X$, $\ev_x : X\to\C$, $\ev_x : f\mapsto f(x)$ is a homomorphism o
 
 
 %           for rep theory we (might) want 'The simplest proof of Burnside’s theorem on matrix algebras'
+
+
+%           algebraic geometry - https://users.math.msu.edu/users/magyarp/Math419H/Fulton-Alg-Curves.pdf
+
+%           newton polygons https://personal.math.ubc.ca/~cass/research/pdf/Newton.pdf
