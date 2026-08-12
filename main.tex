@@ -28,17 +28,21 @@
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 \DeclareMathOperator{\alg}{alg}
 \DeclareMathOperator{\aut}{Aut}
+\renewcommand{\b}{\mathfrak{b}}
 \newcommand{\btr}{$\blacktriangleright$ }
 \DeclareMathOperator{\ber}{Ber}
+\renewcommand{\c}{\mathfrak{c}}
+\renewcommand{\d}{\mathrm{d}}
 \DeclareMathOperator{\disc}{disc}
 \newcommand{\eps}{\varepsilon}
 \DeclareMathOperator{\id}{id}
-\renewcommand{\d}{\mathrm{d}}
+\newcommand{\ideal}{\triangleleft}
 \DeclareMathOperator{\ev}{ev}
 \newcommand{\gen}[1]{\langle#1\rangle}
 \newcommand{\m}{\mathfrak{m}}
 \DeclareMathOperator{\mspec}{mSpec}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\p}{\mathfrak{p}}
 \DeclareMathOperator{\pr}{Pr}
 \newcommand{\q}{\mathfrak{q}}
 \DeclareMathOperator{\spn}{span}
@@ -54,6 +58,8 @@
 \newcommand{\E}{\mathbf{E}}
 \DeclareMathOperator{\End}{End}
 \newcommand{\F}{\mathbf{F}}
+\DeclareMathOperator{\Gal}{Gal}
+\newcommand{\Pp}{\mathfrak{P}}
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\R}{\mathbf{R}}
 \renewcommand{\S}{\mathbf{S}}
@@ -247,6 +253,15 @@ Let $a$ solve $a^2\equiv -1\mod p$. Applying Thue's result, let $x,y$ solve $ax\
 \end{proof}
 
 
+\begin{proof}
+Since $-1$ is a quadratic residue, we may solve $x^2+y^2=np$ for some $1\le n < p/2$. If $n=1$ we're done. Otherwise, let $X,Y$ be representatives of $x,y$ modulo $n$ with $\abs{X},\abs{Y} \le n/2$. Then we have $X^2+Y^2 = nk$, for some $1\le k\le n/2$. Now
+\[n^2kp = (x^2+y^2)(X^2+Y^2) = A^2+B^2\]
+where $A = xX+yY$, $B=xY-yX$ are both divisible by $n$. Thus
+\[kp = \left(\frac{A}{n}\right)^2 + \left(\frac{B}{n}\right)^2\]
+giving us descent.
+\end{proof}
+
+
 \newpage
 \section{Algebraic Integers}
 
@@ -359,6 +374,10 @@ Let $\zeta=\zeta_{p^r}$, $K=\Q(\zeta)$, and $m=[K:\Q]$. We have
 % but perhaps we can also use traces for this?
 
 
+\begin{fact*}
+    For $\a=(\alpha)$ we have $N(\a) = \abs{N_{K/\Q}(\alpha)}$.
+\end{fact*}
+
 \newpage
 \section{Fermat's Last Theorem}
 \begin{theorem*}(Wiles, Taylor, Taniyama, Shimura, Ribet, Frey, \dots, Fermat)
@@ -454,7 +473,7 @@ It follows that
 
 \begin{fact*}
 We have
-\[\zeta = \sum_{a\in\F_p}(a:p)\zeta^a\]
+\[\tau = \sum_{a\in\F_p}(a:p)\zeta^a\]
 \end{fact*}
 
 
@@ -495,6 +514,14 @@ Let $p,q$ be distinct odd primes. Then $(p:q)(q:p)=\eps_p\eps_q$.
 
 \begin{proof}
 Let us consider $N_q(1) \mod q$. On one hand, $N_q(1)=p^{q-1} + (p^*)^{(q-1)/2} \equiv 1 + (p^*:q) \mod q$. On the other hand, the sphere $\{(x_1,\dots,x_q)\in\F_p^q : x_1^2+\dots+x_q^2=1\}$ is acted on by $C_q$ via cyclic rotations. It follows that $N_q(1) \equiv 1 + (q:p) \mod q$.
+\end{proof}
+
+
+\begin{proof}
+We have 
+\[\tau (p^*:q) \equiv \tau (p^*)^{\frac{q-1}{2}}=\tau (\tau^2)^{\frac{q-1}{2}}=\tau^q \equiv \sum_{a\in\F_p} (a:p)\zeta^{aq}=
+\sum_{a\in\F_p} (aq:p)\zeta^{a}=(q:p)\tau \mod q\]
+Multiply by $\tau$ to remove this term.
 \end{proof}
 
 
@@ -812,6 +839,60 @@ for units $\eps$ and some $z\in\Z[\sqrt{-2}]$. The only units are $\pm1$, which 
 We get $1=3a^2b-2b^3$, so $b=\pm 1$. Also, modulo three, we have $b\equiv 1 \mod 3$. So $b=1$, and thus $a=\pm1$. There are two solutions for $y$, namely $\pm 5$, and $x=3$.
 
 
+\begin{exer*}
+    Solve $y^2=x^3-1$ in integers.
+\end{exer*}
+
+
+\newpage
+\section{Sums of Four Squares}
+
+\begin{fact*}
+Every positif integer is a sum of four integer squares.
+\end{fact*}
+
+\begin{proof}
+Step 1. Considering that the norm on quaternions is multiplicative, it suffices to show that any odd prime is a sum of four integer squares. \\
+Step 2. By the pigeonhole principle, we may solve $1+x^2+y^2\equiv 0\mod p$ with $0\le x,y < p/2$. \\
+Step 3. Let $n\ge 1$ be minimal such that $np=x^2+y^2+z^2+w^2$ is the sum of four squares. We have $n<\frac{3}{4}p$. We cannot have $n$ even. Indeed, if $n$ were even, wlog $x,y$ have the same parity and so do $z,w$. Then \[\frac{n}{2}p = \left(\frac{x+y}{2}\right)^2 + 
+\left(\frac{x-y}{2}\right)^2 + 
+\left(\frac{z+w}{2}\right)^2 +
+\left(\frac{z-w}{2}\right)^2\]
+Step 4. Suppose $n\ge 3$ is odd. Let $X,Y,Z,W$ be the representatives of $x,y,z,w$ modulo $n$ inside $(-n/2,n/2)$. Then $X^2+Y^2+Z^2+W^2 = kn$ for some $0<k<n$. Now we have
+\[n^2kp = (x^2+y^2+z^2+w^2)(X^2+Y^2+Z^2+W^2) = A^2+B^2+C^2+D^2\]
+where
+$A=xX+yY+zZ+wW$,
+$B=xY-yX+zW-wZ$,
+$C=xZ-zX+wY-wY$,
+$D=yZ-zY+xW-wX$
+are all divisible by $n$. Thus \[kp = \left(\frac{A}{n}\right)^2 + \left(\frac{B}{n}\right)^2 + \left(\frac{C}{n}\right)^2 + \left(\frac{D}{n}\right)^2\]
+is a smaller solution.
+\end{proof}
+
+
+\newpage
+\section{\texorpdfstring{$p$}{}-adics}
+
+\begin{fact*}
+Let $f\in\Z[x_1,\dots,x_m]$. Then $f$ is soluble in $\Z_p$ iff $f$ is soluble in $\Z/p^n$ for all $n$.
+\end{fact*}
+
+
+\begin{fact*}
+Units in $\Z_p$ are precisely those not divisible by $p$.
+\end{fact*}
+
+
+\begin{fact*}
+Rationality $\iff$ eventual periodicity of $p$-adic expansion.
+\end{fact*}
+
+
+\begin{fact*}
+The non-zero ideals of $\Z_p$ are precisely $p^n\Z_p$ and $\Z_p/p^n\Z_p\equiv\Z/p^n\Z$.
+\end{fact*}
+
+
 \newpage
 \section{The Diophantine equation \texorpdfstring{$x^2+7=2^n$}{}}
 
@@ -864,6 +945,43 @@ Let $K$ be a number field, $\a$ a non-zero ideal in $\OO_K$. Then there is some 
 (Sketch). Work with the set $B_r = \{(x_1,\dots,x_{r_1},z_1,\dots,z_{r_2})\in\R^{r_1}\times\C^{r_2}:\sum \abs{x_i} + 2\sum\abs{z_j}\le r\}$.
 \end{proof}
 
+
+\newpage
+\section{Unique Factorization to Prime Ideals}
+
+\begin{fact*}
+Let $K$ be a number field. Then any non-zero ideal $\a \ideal \OO_K$ may be written as a product of prime ideals
+\[ \a = \p_1 \dots \p_k\]
+in a unique manner (up to reordering).
+\end{fact*}
+
+
+\begin{fact*}
+Let $K$ be a number field, $\a,\b,\c$ ideals of $\OO_K$. If $\a$ is non-zero, then \[\a\b=\a\c \implies \b=\c\]
+\end{fact*}
+
+
+\begin{fact*}
+Let $K$ be a number field, $\a,\b$ ideals of $\OO_K$. Then 
+\[\a \subseteq \b \iff \b \mid \a\]
+\end{fact*}
+
+\begin{fact*}
+Let $K$ be a number field, $\a,\b,\p$ be ideals of $\OO_K$, where $\p$ is prime. Then 
+\[\p \mid \a\b \implies \p \mid \a \text{ or } \p\mid \b\]
+\end{fact*}
+
+\begin{fact*}
+Let $K$ be a number field. Then any ideal $\a$ of $\OO_K$ is divisible by some prime ideal $\p$ of $\OO_K$.
+\end{fact*}
+
+\begin{fact*}
+Let $K$ be a number field. Then there is no infinite chain of ideals $\a_1 \subsetneq \a_2 \subsetneq \a_3 \subsetneq \dots$ of $\OO_K$.
+\end{fact*}
+
+\begin{fact*}
+Let $K$ be a number field, $\a$ a non-zero ideal of $\OO_K$. Then there exists a non-zero ideal $\b$ of $\OO_K$ such that $\a\b$ is a principal ideal.
+\end{fact*}
 
 \newpage
 \section{Absolute Values}
@@ -973,7 +1091,6 @@ Let $K$ be a complete field under the absolute value $\abs{\cdot}$. Suppose $E/K
 \end{fact*}
 
 
-
 \newpage
 \section{Galois Theory}
 \begin{fact*}
@@ -1053,9 +1170,78 @@ Find formulas for $\zeta_K$ where $K=\Q(i)$. Deduce that $r_2(n) = \sum_{d\mid n
 Find formulas for $\zeta_K$ where $K=\Q(\sqrt{-2})$. Deduce that $\sum_{n}\chi(n)/n = \pi/2^{3/2}$ where $\chi(n) = 1$ for $n\equiv 1,3\mod 8$ and $\chi(n) = -1$ for $n\equiv 5,7\mod 8$.
 \end{exer*}
 
+
 \begin{exer*}
 Apply Minkowski's theorem to show the following. If $(-5:p)=1$, then either $p=x^2+5y^2$ or $2p=x^2+5y^2$.
 \end{exer*}
+
+
+\newpage
+\section{Euclidean domains, PIDs, UFDs, Dedekind Domains}
+
+\begin{nomn*}
+A domain $A$ is \emph{Euclidean} if there is a function $\phi:A\setminus\{0\} \to \Z_{\ge0}$ such that for all $a,b\in A$ with $b$ non-zero, there exists $q,r$ in $A$ with \[a = bq + r\] and with \[r=0 \text{ or }\phi(r) < \phi(b)\]
+\end{nomn*}
+
+\begin{nomn*}
+A \emph{Principal Ideal Domain} is a domain $A$ in which all ideals are principal.
+\end{nomn*}
+
+\begin{fact*}
+A Euclidean domain is a PID.
+\end{fact*}
+
+\begin{nomn*}
+A \emph{Unique Factorization Domain} is a domain $A$ such that for each non-zero, non-unit $a\in A$, there exists a factorization
+\[ a = p_1\dots p_k\]
+where the $p_i$ are irreducible, and moreover where such factorizations are unique up to reordering and associates. 
+\end{nomn*}
+
+\begin{fact*}
+A PID is a UFD.
+\end{fact*}
+
+\begin{proof}
+Let $A$ be a PID, so $A$ is Noetherian, so we cannot have a strictly increasing infinite sequence of ideals of $A$. This implies that any non-zero, non-unit element $a$ is given as a product of irreducibles. Now it remains to show that if $p$ is irreducible then it is prime. Indeed, $\gen{p}$ is maximal among principal ideals, so it is a maximal ideal, hence a prime ideal, so $p$ is prime.
+\end{proof}
+
+\begin{fact*}
+If $A$ is a UFD then so is $A[x]$.
+\end{fact*}
+
+
+An example of a UFD which is not a PID is $\Z[x]$. The ideal $\gen{2,x}$ is not principal.
+
+
+Let us axiomatize the theory of unique factorization into prime ideals in the ring of integers of a number field.
+
+\begin{nomn*}
+A \emph{Dedekind domain} is a Noetherian, integrally closed domain, in which every non-zero prime ideal is maximal.
+\end{nomn*}
+
+\begin{fact*}
+In a Dedekind domain, there is unique factorization of non-zero ideals into prime ideals.
+\end{fact*}
+
+\begin{fact*}
+Let $A$ be a Dedekind domain. Then any ideal $\a$ of $A$ is generated by at most two elements. In fact, for any non-zero element $\alpha$ in $\a$ there is a complementary generator.
+\end{fact*}
+
+\begin{proof}
+Let $\a\ideal A$ be a given non-zero ideal, and write $\a = \p_1^{e_1}\dots\p_n^{e_n}$. Given any non-zero $\alpha\in\a$, we write $(\alpha) = \p_1^{f_1}\dots p_n^{f_n}\q_1^{g_1}\dots\q_m^{g_m}$. We have $(\alpha)\subseteq \a$ so $\a\mid(\alpha)$ so $f_i\ge e_i$. Now suppose we've found some $\beta\in A$ with $\nu_{\p_i}(\beta)=e_i$ and $\nu_{\q_j}(\beta)=0$. Then we'd have $(\alpha,\beta)=\gcd((\alpha),(\beta))=\p_1^{e_1}\dots\p_n^{e_n}=\a$. So it remains to find such $\beta$. To do so, pick some $\gamma_i\in\p_i^{e_i}\setminus\p_i^{e_i+1}$. By the chinese remainder theorem, we may solve $\beta\equiv \gamma_i \mod \p_i^{e_i+1}$, $\beta\equiv 1\mod \q_j$.
+\end{proof}
+
+\begin{fact*}
+Let $A$ be a Dedekind domain with field of fractions $K$, let $L/K$ be a finite field extension. Then the integral closure $B$ of $A$ in $L$ is a Dedekind domain, and its field of fractions is $L$.
+\end{fact*}
+
+\begin{fact*}
+If $L/K$ is Galois, then $\Gal(L/K)$ acts transitively on the primes $\Pp$ over $\p$.
+\end{fact*}
+
+
+
+
 
 
 % \newpage
@@ -1114,3 +1300,5 @@ Apply Minkowski's theorem to show the following. If $(-5:p)=1$, then either $p=x
 %           algebraic geometry - https://users.math.msu.edu/users/magyarp/Math419H/Fulton-Alg-Curves.pdf
 
 %           newton polygons https://personal.math.ubc.ca/~cass/research/pdf/Newton.pdf
+
+%           algebraic proof of finiteness of class group in Ireland Rosen page 178
