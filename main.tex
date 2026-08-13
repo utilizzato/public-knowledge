@@ -314,6 +314,16 @@ Then $A\otimes B\in \Z^{nm\times nm}$ and $A\otimes \id_n + \id_m\otimes B$ have
 \end{proof}
 
 
+\begin{fact*}
+    For $\a=(\alpha)$ we have $N(\a) = \abs{N_{K/\Q}(\alpha)}$.
+\end{fact*}
+
+
+\begin{fact*}
+$K$ has class number $1$ iff $K$ is a PID iff $K$ is a UFD.
+\end{fact*}
+
+
 \newpage
 \section{Cyclotomics}
 
@@ -373,10 +383,6 @@ Let $\zeta=\zeta_{p^r}$, $K=\Q(\zeta)$, and $m=[K:\Q]$. We have
 \end{fact*} % this is taken from https://virtualmath1.stanford.edu/~conrad/154Page/handouts/cycint.pdf where they use it to show O_K=Z[zeta] using discriminants
 % but perhaps we can also use traces for this?
 
-
-\begin{fact*}
-    For $\a=(\alpha)$ we have $N(\a) = \abs{N_{K/\Q}(\alpha)}$.
-\end{fact*}
 
 \newpage
 \section{Fermat's Last Theorem}
@@ -1204,6 +1210,10 @@ A PID is a UFD.
 \begin{proof}
 Let $A$ be a PID, so $A$ is Noetherian, so we cannot have a strictly increasing infinite sequence of ideals of $A$. This implies that any non-zero, non-unit element $a$ is given as a product of irreducibles. Now it remains to show that if $p$ is irreducible then it is prime. Indeed, $\gen{p}$ is maximal among principal ideals, so it is a maximal ideal, hence a prime ideal, so $p$ is prime.
 \end{proof}
+
+\begin{fact*}
+In a UFD, an element is irreducible iff it is prime.
+\end{fact*}
 
 \begin{fact*}
 If $A$ is a UFD then so is $A[x]$.
